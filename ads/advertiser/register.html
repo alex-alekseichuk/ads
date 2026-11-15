@@ -1,0 +1,121 @@
+{header}
+<script language="JavaScript" type="text/javascript" src="{HTTP_ROOT}img/check.js"></script>
+<script language="JavaScript">
+<!--
+function OnSubmit()
+{
+	var sError = "";
+
+	{advertiser_checks}
+
+	if (document.forms["advertiser"].passwd.value != document.forms["advertiser"].passwd2.value)
+	{
+		sError += "\tEntered passwords are not the same\n";
+	}
+
+	if (document.forms["advertiser"].countryId.value == 219)
+	{
+		sError += checkSelectField("State", document.forms["advertiser"].stateId.selectedIndex);
+	} else {
+		sError += checkField("Non USA State", document.forms["advertiser"].state.value, true, 2, 64);
+	}
+
+
+	if (sError) {
+		alert("Warning:\n" + sError);
+		return false;
+	} else {
+		return true;
+	}
+}
+//-->
+</script>      <tr>
+        <td height="300" align="center" valign="top">
+		<span class="font_red">{sMessage}</span><br />
+		<br />
+		<table width="60%" border="0" align="center" cellpadding="5" cellspacing="0" class="news_advertiser_table">
+          <tr>
+            <td><strong>::: Advertiser Registration </strong></td>
+          </tr>
+          <tr>
+           <form name="advertiser" action="advertiser?p=register&{params}" method="post" onSubmit="return OnSubmit();">
+			<td align="center">
+			<table width="80%" border="0" cellpadding="5" cellspacing="0" class="advertiser_table_border">
+              <tr>
+                <td align="right"><input type="hidden" name="cmd" value="register" />
+Email</td>
+                <td class="advertiser_input"><input type="text" name="email" value="{email}" /></td>
+              </tr>
+              <tr>
+                <td align="right">Password</td>
+                <td class="advertiser_input"><input type="password" name="passwd" value="" /></td>
+              </tr>
+              <tr>
+                <td align="right">Re-enter Password</td>
+                <td class="advertiser_input"><input type="password" name="passwd2" value="" /></td>
+              </tr>
+              <tr>
+                <td align="right">Name</td>
+                <td class="advertiser_input"><input type="text" name="name" value="{name}" /></td>
+              </tr>
+              <tr>
+                <td align="right">Company</td>
+                <td class="advertiser_input"><input type="text" name="company" value="{company}" /></td>
+              </tr>
+              <tr>
+                <td align="right">Address 1</td>
+                <td class="advertiser_input"><input type="text" name="address1" value="{address1}" /></td>
+              </tr>
+              <tr>
+                <td align="right">Address 2 </td>
+                <td class="advertiser_input"><input type="text" name="address2" value="{address2}" /></td>
+              </tr>
+              <tr>
+                <td align="right">City</td>
+                <td class="advertiser_input"><input type="text" name="city" value="{city}" /></td>
+              </tr>
+              <tr>
+                <td align="right">State</td>
+                <td class="advertiser_select"><select name="stateId">
+                  {statesOptions}
+                </select>                </td>
+              </tr>
+              <tr>
+                <td align="right">Non USA State</td>
+                <td class="advertiser_input"><input type="text" name="state" value="{state}" /></td>
+              </tr>
+              <tr>
+                <td align="right">Country</td>
+                <td class="advertiser_select"><select name="countryId">
+                  {countriesOptions}
+                </select>                </td>
+              </tr>
+              <tr>
+                <td align="right">ZIP</td>
+                <td class="advertiser_input"><input type="text" name="zip" value="{zip}" /></td>
+              </tr>
+              <tr>
+                <td align="right">Phone</td>
+                <td class="advertiser_input"><input type="text" name="phone" value="{phone}" /></td>
+              </tr>
+              <tr>
+                <td align="right">Fax</td>
+                <td class="advertiser_input"><input type="text" name="fax" value="{fax}" /></td>
+              </tr>
+              <tr>
+                <td align="right">URL</td>
+                <td class="advertiser_input"><input type="text" name="urlAdv" value="{urlAdv}" /></td>
+              </tr>
+              <tr>
+                <td colspan="2" align="center" class="advertiser_btn"><input type="submit" value="Register">
+<input type="reset" value="Reset"></td>
+                </tr>
+            </table>
+			  <br /></td>
+			</form>
+          </tr>
+        </table>
+		<br />
+		<br /></td>
+      </tr>
+{footer}

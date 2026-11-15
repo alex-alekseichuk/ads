@@ -1,0 +1,159 @@
+{header}
+      <tr>
+        <td height="300" align="center" valign="top" class="advertiser_links"><span class="font_red">{sMessage}</span><br />
+		<br />
+		<table width="98%" border="0" align="center" cellpadding="5" cellspacing="0" class="news_advertiser_table">
+          <tr>
+            <td><strong>::: Campaigns</strong></td>
+          </tr>
+          <tr>
+           
+			<td align="center"><a href="advertiser?p=campaign&amp;{params}">Add Campaign</a> <br />
+<!-- begin_campaigns -->
+
+{info} &nbsp;&nbsp;&nbsp;
+<!-- begin_campaigns_pager -->
+<!-- begin_campaigns_first -->
+<a href="{url}">First</a>
+<!-- end_campaigns_first -->
+<!-- begin_campaigns_prev -->
+<a href="{url}">Prev.</a>
+<!-- end_campaigns_prev -->
+<!-- begin_campaigns_page -->
+<!-- begin_campaigns_link -->
+<a href="{url}">{page}</a>
+<!-- end_campaigns_link -->
+<!-- begin_campaigns_curpage -->
+<b>{page}</b>
+<!-- end_campaigns_curpage -->
+<!-- end_campaigns_page -->
+<!-- begin_campaigns_next -->
+<a href="{url}">Next</a>
+<!-- end_campaigns_next -->
+<!-- begin_campaigns_last -->
+<a href="{url}">Last</a>
+<!-- end_campaigns_last -->
+<!-- end_campaigns_pager -->
+<br />
+<br />
+<table width="100%" border="1" cellpadding="3" cellspacing="0" bordercolor="#B6CFA9" class="news_advertiser_table">
+  <tr>
+    <td align="center"><!-- begin_campaigns_sort_campaignId -->
+        <a href="{url}">ID</a>
+        <!-- begin_campaigns_asc_campaignId -->
+      <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+      <!-- end_campaigns_asc_campaignId -->
+        <!-- begin_campaigns_desc_campaignId -->
+      <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+      <!-- end_campaigns_desc_campaignId -->
+      <!-- end_campaigns_sort_campaignId --></td>
+    <td align="center"><!-- begin_campaigns_sort_name -->
+        <a href="{url}">Name</a>
+        <!-- begin_campaigns_asc_name -->
+      <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+      <!-- end_campaigns_asc_name -->
+        <!-- begin_campaigns_desc_name -->
+      <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+      <!-- end_campaigns_desc_name -->
+      <!-- end_campaigns_sort_name --></td>
+    <td align="center"><!-- begin_campaigns_sort_category -->
+        <a href="{url}">Category</a>
+        <!-- begin_campaigns_asc_category -->
+      <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+      <!-- end_campaigns_asc_category -->
+        <!-- begin_campaigns_desc_category -->
+      <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+      <!-- end_campaigns_desc_category -->
+      <!-- end_campaigns_sort_category --></td>
+    <td align="center"><!-- begin_campaigns_sort_type -->
+        <a href="{url}">Type</a>
+        <!-- begin_campaigns_asc_type -->
+      <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+      <!-- end_campaigns_asc_type -->
+        <!-- begin_campaigns_desc_type -->
+      <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+      <!-- end_campaigns_desc_type -->
+      <!-- end_campaigns_sort_type --></td>
+    <td align="center"><!-- begin_campaigns_sort_status -->
+        <a href="{url}">Status</a>
+        <!-- begin_campaigns_asc_status -->
+      <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+      <!-- end_campaigns_asc_status -->
+        <!-- begin_campaigns_desc_status -->
+      <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+      <!-- end_campaigns_desc_status -->
+      <!-- end_campaigns_sort_status --></td>
+    <td align="center"><!-- begin_campaigns_sort_price -->
+        <a href="{url}">Price</a>
+        <!-- begin_campaigns_asc_price -->
+      <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+      <!-- end_campaigns_asc_price -->
+        <!-- begin_campaigns_desc_price -->
+      <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+      <!-- end_campaigns_desc_price -->
+      <!-- end_campaigns_sort_price --></td>
+    <td align="center"><!-- begin_campaigns_sort_urlActual -->
+        <a href="{url}">Url</a>
+        <!-- begin_campaigns_asc_urlActual -->
+      <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+      <!-- end_campaigns_asc_urlActual -->
+        <!-- begin_campaigns_desc_urlActual -->
+      <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+      <!-- end_campaigns_desc_urlActual -->
+      <!-- end_campaigns_sort_urlActual --></td>
+    <td align="center"><!-- begin_campaigns_sort_account -->
+        <a href="{url}">Account</a>
+        <!-- begin_campaigns_asc_account -->
+      <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+      <!-- end_campaigns_asc_account -->
+        <!-- begin_campaigns_desc_account -->
+      <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+      <!-- end_campaigns_desc_account -->
+      <!-- end_campaigns_sort_account --></td>
+    <td align="center"><!-- begin_campaigns_sort_registered -->
+        <a href="{url}">Registered</a>
+        <!-- begin_campaigns_asc_registered -->
+      <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+      <!-- end_campaigns_asc_registered -->
+        <!-- begin_campaigns_desc_registered -->
+      <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+      <!-- end_campaigns_desc_registered -->
+      <!-- end_campaigns_sort_registered --></td>
+    <td align="center"><!-- begin_campaigns_sort_updated -->
+        <a href="{url}">Updated</a>
+        <!-- begin_campaigns_asc_updated -->
+      <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+      <!-- end_campaigns_asc_updated -->
+        <!-- begin_campaigns_desc_updated -->
+      <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+      <!-- end_campaigns_desc_updated -->
+      <!-- end_campaigns_sort_updated --></td>
+  </tr>
+  <!-- begin_campaigns_item -->
+  <tr>
+    <td align="center">{campaignId}</td>
+    <td align="center"><a href="advertiser?p=campaign&amp;campaignId={campaignId}&amp;{params}">{name}</a></td>
+    <td align="center">{category}</td>
+    <td align="center">{type}</td>
+    <td align="center">{status}</td>
+    <td align="center">{price}</td>
+    <td align="center">{urlActual}&nbsp;</td>
+    <td align="center">{account}</td>
+    <td align="center">{registered}</td>
+    <td align="center">{updated}</td>
+  </tr>
+  <!-- end_campaigns_item -->
+  <!-- begin_campaigns_noitems -->
+  <tr>
+    <td colspan="10">No campaigns</td>
+  </tr>
+  <!-- end_campaigns_noitems -->
+</table>
+{info} &nbsp;&nbsp;&nbsp; {pager2}<br /></td>
+	<!-- end_campaigns -->		
+          </tr>
+        </table>
+		<br />
+		<br /></td>
+      </tr>
+{footer}    

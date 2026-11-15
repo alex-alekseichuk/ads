@@ -1,0 +1,402 @@
+<html>
+<head>
+<link href="{HTTP_ROOT}img/style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript" type="text/javascript" src="{HTTP_ROOT}img/check.js"></script>
+<script language="JavaScript">
+<!--
+function OnDelete()
+{
+	if (confirm("Are you sure you want to delete this campaign and all its creatives?"))
+	{
+		location='admin?p=campaign&cmd=delete&{params}';
+	}
+}
+function OnSubmit()
+{
+	var sError = "";
+
+	{campaign_checks}
+
+	var pricePub = document.forms["campaign"].pricePub.value;
+	var price = document.forms["campaign"].price.value;
+	if (price!="" && (! isNaN(price)) && pricePub!="" && (! isNaN(pricePub)))
+	{
+		if (parseFloat(pricePub) > parseFloat(price))
+			sError += "\tPublisher price is greater than Advertiser price\n";
+	}
+
+	if (sError) {
+		alert("Warning:\n" + sError);
+		return false;
+	} else {
+		return true;
+	}
+}
+
+function OnApprove()
+{
+	if (! OnSubmit())
+		return;
+	document.forms['campaign'].cmd.value='approve';
+	document.forms['campaign'].submit();
+}
+//-->
+</script>
+<script language="JavaScript">
+<!--
+function OnPreview(id)
+{
+	var w = window.open('admin?p=preview&bNew=0&creativeId=' + id, 'creative_' + id + '_0');
+	w.focus();
+}
+//-->
+</script>
+</head>
+
+<body>
+<table width="100%" border="0" cellpadding="5" cellspacing="0" class="text">
+  <tr>
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="53"><img src="{HTTP_ROOT}img/h1.gif" width="53" height="33" /></td>
+        <td align="center" background="{HTTP_ROOT}img/h_bg.gif"><table border="0" cellpadding="3" cellspacing="0" class="topmenu">
+          <tr align="center">
+            <td><a href="admin?p=advertisers">Advertisers</a></td>
+            <td valign="top"><img src="{HTTP_ROOT}img/break.gif" width="12" height="8" /></td>
+            <td><a href="admin?p=publishers">Publishers</a></td>
+			<td valign="top"><img src="{HTTP_ROOT}img/break.gif" width="12" height="8" /></td>
+            <td><a href="admin?p=rep_campaigns">Reports</a></td>
+			<td valign="top"><img src="{HTTP_ROOT}img/break.gif" width="12" height="8" /></td>
+            <td><a href="admin?p=admins">Admins</a></td>
+			<td valign="top"><img src="{HTTP_ROOT}img/break.gif" width="12" height="8" /></td>
+            <td><a href="admin?p=domains">Domains</a></td>
+			<td valign="top"><img src="{HTTP_ROOT}img/break.gif" width="12" height="8" /></td>
+            <td><a href="admin?p=options">Options</a></td>
+			<td valign="top"><img src="{HTTP_ROOT}img/break.gif" width="12" height="8" /></td>
+            <td><a href="admin?p=login&amp;cmd=logout">Logout</a></td>
+          </tr>
+        </table></td>
+        <td width="53"><img src="{HTTP_ROOT}img/h2.gif" width="53" height="33" /></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td align="center" valign="top" class="text_link"><a href="admin?p=advertisers&{params}">Advertisers</a> / <a href="admin?p=advertiser&{params}">Advertiser #{advertiserId}</a> /
+{sTitle}<br>
+Campaign
+<!-- begin_bPayments -->
+<a href="admin?p=cam_payments&{params}">Payments</a>
+<!-- end_bPayments -->
+<br>
+<br>
+<table width="60%" border="0" cellpadding="0" cellspacing="0" class="text">
+      <tr>
+        <td colspan="3"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title_table">
+          <tr>
+            <td width="37"><img src="{HTTP_ROOT}img/tab_l.gif" width="37" height="23" /></td>
+                <td align="left" background="{HTTP_ROOT}img/tabl_bg.gif">Campaign</td>
+                <td width="5"><img src="{HTTP_ROOT}img/tabl_r.gif" width="5" height="23" /></td>
+              </tr>
+          </table></td>
+        </tr>
+      <tr>
+        <td width="1" background="{HTTP_ROOT}img/grey_dot.gif"><img src="{HTTP_ROOT}img/grey_dot.gif" width="1" height="1" /></td>
+          <td align="center" class="text"><br>
+            <span class="font_red">{sMessage}            </span>
+            <form name="campaign" action="admin?p=campaign&{params}" method="post" enctype="multipart/form-data" onSubmit="return OnSubmit();"><table width="80%" border="0" align="center" cellpadding="3" cellspacing="0" class="table_border">
+              <tr>
+                <td width="43%" align="right" class="text_link"><input type="hidden" name="cmd" value="{cmd}">
+                  <input type="hidden" name="campaignId" value="{campaignId}">
+Name</td>
+                <td width="57%" align="left" class="input"><input type="text" name="name" value="{name}"></td>
+              </tr>
+              <tr>
+                <td align="right" class="text">Category</td>
+                <td align="left" class="select"><select name="categoryId">
+                  {categoryOptions}
+                </select>                </td>
+              </tr>
+              <tr>
+                <td align="right">Domain</td>
+                <td align="left" class="select"><select name="domainId">
+                  {domainOptions}
+                </select>                </td>
+              </tr>
+			  <tr>
+                <td align="right">Type</td>
+                <td align="left" class="select"><select name="typeId">
+                  {typeOptions}
+                </select>                </td>
+              </tr>
+			  <tr>
+                <td align="right">New Price</td>
+                <td align="left" class="input"><input type="text" name="priceNew" value="{priceNew}"></td>
+              </tr>
+			  <tr>
+                <td align="right">Advertiser Price</td>
+                <td align="left" class="input"><input type="text" name="price" value="{price}"></td>
+              </tr>
+			  <tr>
+                <td align="right">Publisher Price</td>
+                <td align="left" class="input"><input type="text" name="pricePub" value="{pricePub}"></td>
+              </tr>
+			  <tr>
+                <td align="right">New Url </td>
+                <td align="left" class="input"><input type="text" name="urlNew" value="{urlNew}"><br>&#123;c&#125;, &#123;p&#125;, &#123;s&#125;</td>
+              </tr>
+			  <tr>
+                <td align="right">Url</td>
+                <td align="left" class="input"><input type="text" name="urlActual" value="{urlActual}"><br>&#123;c&#125;, &#123;p&#125;, &#123;s&#125;</td>
+              </tr>
+			  <tr>
+                <td align="right">Satus</td>
+                <td align="left" class="select"><select name="statusId">
+                  {statusOptions}
+                </select>                </td>
+              </tr>
+			  <tr>
+                <td align="right">Account</td>
+                <td align="left" class="input"><input type="text" name="account" value="{account}"></td>
+              </tr>
+			  <tr>
+                <td align="right">Suppression list file</td>
+                <td align="left" class="select">{suppFile}
+                  <!-- begin_bSupp -->
+                <a href="admin?p=supp&{params}">Download</a> <a href="admin?p=campaign&cmd=delSupp&{params}">Delete</a>
+				<!-- end_bSupp -->				</td>
+              </tr>
+			   <tr>
+                <td align="right">&nbsp;</td>
+                <td align="left" class="input"><input type="file" name="suppFile"></td>
+              </tr>
+			   <tr>
+                <td align="right">Updated</td>
+                <td align="left" class="input">{updated}&nbsp;</td>
+              </tr>
+			   <tr>
+                <td align="right">Registered</td>
+                <td align="left" class="input">{registered}&nbsp;</td>
+              </tr>
+
+			   <tr>
+                <td colspan="2" align="center" class="btn"><input type="submit" value="{sCmd}">
+<input type="button" value="Cancel" onClick="location='admin?p=advertiser&{params}';">
+<input type="reset" value="Reset"><!-- begin_bDelete --><input type="button" value="Delete" onClick="OnDelete();"><!-- end_bDelete -->
+<!-- begin_bApprove --><input type="button" value="Approve" onClick="OnApprove();"><!-- end_bApprove -->
+</td>
+              </tr>
+            </table>
+</form>
+            <br>
+            <table width="80%" border="0" align="center" cellpadding="3" cellspacing="0" class="text">
+              <tr>
+                <td align="center" class="text_link">
+				
+				
+				<!-- begin_creatives -->
+                  Creatives <br>
+                  <a href="admin?p=creative&{params}"><strong>Add Creative</strong></a> <br>
+{info} &nbsp;&nbsp;&nbsp;
+<!-- begin_creatives_pager -->
+<!-- begin_creatives_first -->
+<a href="{url}">First</a>
+<!-- end_creatives_first -->
+<!-- begin_creatives_prev -->
+<a href="{url}">Prev.</a>
+<!-- end_creatives_prev -->
+<!-- begin_creatives_page -->
+<!-- begin_creatives_link -->
+<a href="{url}">{page}</a>
+<!-- end_creatives_link -->
+<!-- begin_creatives_curpage -->
+<b>{page}</b>
+<!-- end_creatives_curpage -->
+<!-- end_creatives_page -->
+<!-- begin_creatives_next -->
+<a href="{url}">Next</a>
+<!-- end_creatives_next -->
+<!-- begin_creatives_last -->
+<a href="{url}">Last</a><!-- end_creatives_last -->
+<!-- end_creatives_pager -->              </td>
+              </tr>
+              <tr>
+                <td align="center" class="text"><table cellpadding="5" class="table_border">
+                  <tr align="center" class="td_bg">
+                    <td><!-- begin_creatives_sort_creativeId -->
+                        <a href="{url}">ID</a>
+                        <!-- begin_creatives_asc_creativeId -->
+                      <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+                      <!-- end_creatives_asc_creativeId -->
+                        <!-- begin_creatives_desc_creativeId -->
+                      <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+                      <!-- end_creatives_desc_creativeId -->
+                      <!-- end_creatives_sort_creativeId --></td>
+                    <td><!-- begin_creatives_sort_type -->
+                        <a href="{url}">Type</a>
+                        <!-- begin_creatives_asc_type -->
+                      <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+                      <!-- end_creatives_asc_type -->
+                        <!-- begin_creatives_desc_type -->
+                      <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+                      <!-- end_creatives_desc_type -->
+                      <!-- end_creatives_sort_type --></td>
+                    <td><!-- begin_creatives_sort_status -->
+                        <a href="{url}">Status</a>
+                        <!-- begin_creatives_asc_status -->
+                      <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+                      <!-- end_creatives_asc_status -->
+                        <!-- begin_creatives_desc_status -->
+                      <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+                      <!-- end_creatives_desc_status -->
+                      <!-- end_creatives_sort_status --></td>
+                    <td><!-- begin_creatives_sort_registered -->
+                        <a href="{url}">Registered</a>
+                        <!-- begin_creatives_asc_registered -->
+                      <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+                      <!-- end_creatives_asc_registered -->
+                        <!-- begin_creatives_desc_registered -->
+                      <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+                      <!-- end_creatives_desc_registered -->
+                      <!-- end_creatives_sort_registered --></td>
+                    <td><!-- begin_creatives_sort_updated -->
+                        <a href="{url}">Updated</a>
+                        <!-- begin_creatives_asc_updated -->
+                      <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+                      <!-- end_creatives_asc_updated -->
+                        <!-- begin_creatives_desc_updated -->
+                      <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+                      <!-- end_creatives_desc_updated -->
+                      <!-- end_creatives_sort_updated --></td>
+                    <td>Preview</td>
+                  </tr>
+                  <!-- begin_creatives_item -->
+                  <tr>
+                    <td align="center"><a href="admin?p=creative&creativeId={creativeId}&{params}">{creativeId}</a></td>
+                    <td align="center">{type}</td>
+                    <td align="center">{status}</td>
+                    <td align="center">{registered}</td>
+                    <td align="center">{updated}</td>
+                    <td align="center"><a href="javascript:OnPreview({creativeId});">Preview</a></td>
+                  </tr>
+                  <!-- end_creatives_item -->
+                  <!-- begin_creatives_noitems -->
+                  <tr>
+                    <td colspan="6" class="font_red">No creatives</td>
+                  </tr>
+                  <!-- end_creatives_noitems -->
+                </table>
+                <br></td>
+              </tr>
+              <tr>
+                <td align="center">{info} &nbsp;&nbsp;&nbsp; {pager2}        <!-- end_creatives --></td>
+              </tr>
+			</table>
+
+
+
+            <br><br>
+				<!-- begin_pubprices -->
+            <table width="80%" border="0" align="center" cellpadding="3" cellspacing="0" class="text">
+              <tr>
+                <td align="center" class="text_link">
+				
+                  Publisher prices <br>
+                  <a href="admin?p=campubprice&{params}"><strong>Add specified publisher price</strong></a> <br>
+{info} &nbsp;&nbsp;&nbsp;
+<!-- begin_pubprices_pager -->
+<!-- begin_pubprices_first -->
+<a href="{url}">First</a>
+<!-- end_pubprices_first -->
+<!-- begin_pubprices_prev -->
+<a href="{url}">Prev.</a>
+<!-- end_pubprices_prev -->
+<!-- begin_pubprices_page -->
+<!-- begin_pubprices_link -->
+<a href="{url}">{page}</a>
+<!-- end_pubprices_link -->
+<!-- begin_pubprices_curpage -->
+<b>{page}</b>
+<!-- end_pubprices_curpage -->
+<!-- end_pubprices_page -->
+<!-- begin_pubprices_next -->
+<a href="{url}">Next</a>
+<!-- end_pubprices_next -->
+<!-- begin_pubprices_last -->
+<a href="{url}">Last</a><!-- end_pubprices_last -->
+<!-- end_pubprices_pager -->              </td>
+              </tr>
+              <tr>
+                <td align="center" class="text"><table cellpadding="5" class="table_border">
+                  <tr align="center" class="td_bg">
+                    <td><!-- begin_pubprices_sort_publisherId -->
+                        <a href="{url}">ID</a>
+                        <!-- begin_pubprices_asc_publisherId -->
+                      <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+                      <!-- end_pubprices_asc_publisherId -->
+                        <!-- begin_pubprices_desc_publisherId -->
+                      <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+                      <!-- end_pubprices_desc_publisherId -->
+                      <!-- end_pubprices_sort_publisherId --></td>
+                    <td><!-- begin_pubprices_sort_company -->
+                        <a href="{url}">Company</a>
+                        <!-- begin_pubprices_asc_company -->
+                      <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+                      <!-- end_pubprices_asc_company -->
+                        <!-- begin_pubprices_desc_company -->
+                      <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+                      <!-- end_pubprices_desc_company -->
+                      <!-- end_pubprices_sort_company --></td>
+                    <td><!-- begin_pubprices_sort_price -->
+                        <a href="{url}">Price</a>
+                        <!-- begin_pubprices_asc_price -->
+                      <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+                      <!-- end_pubprices_asc_price -->
+                        <!-- begin_pubprices_desc_price -->
+                      <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+                      <!-- end_pubprices_desc_price -->
+                      <!-- end_pubprices_sort_price --></td>
+                  </tr>
+                  <!-- begin_pubprices_item -->
+                  <tr>
+                    <td align="center"><a href="admin?p=publisher&publisherId={publisherId}&{params}">{publisherId}</a></td>
+                    <td align="center"><a href="admin?p=campubprice&publisherId2={publisherId}&{params}">{company}</a></td>
+                    <td align="center">{price}</td>
+                  </tr>
+                  <!-- end_pubprices_item -->
+                  <!-- begin_pubprices_noitems -->
+                  <tr>
+                    <td colspan="6" class="font_red">No special publisher prices</td>
+                  </tr>
+                  <!-- end_pubprices_noitems -->
+                </table>
+                <br></td>
+              </tr>
+              <tr>
+                <td align="center">{info} &nbsp;&nbsp;&nbsp; {pager2}
+				</td>
+              </tr>
+          </table>
+				<!-- end_pubprices -->
+
+			<br>
+
+			</td>
+          <td width="1" background="{HTTP_ROOT}img/grey_dot.gif"><img src="{HTTP_ROOT}img/grey_dot.gif" width="1" height="1" /></td>
+        </tr>
+      <tr>
+        <td colspan="3" background="{HTTP_ROOT}img/grey_dot.gif"><img src="{HTTP_ROOT}img/grey_dot.gif" width="1" height="1" /></td>
+        </tr>
+    </table> </td></tr>
+  <tr>
+    <td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="footer">
+      <tr>
+        <td background="{HTTP_ROOT}img/fot_dot.gif"><img src="{HTTP_ROOT}img/fot_dot.gif" width="1" height="1" /></td>
+      </tr>
+      <tr>
+        <td height="30" align="center">2006 &copy; Admin area</td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

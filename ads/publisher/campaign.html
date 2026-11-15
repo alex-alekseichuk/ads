@@ -1,0 +1,135 @@
+{header}
+<script language="JavaScript">
+<!--
+function OnPreview(id)
+{
+	var w = window.open('publisher?p=preview&bNew=0&creativeId=' + id, 'creative_' + id + '_0');
+	w.focus();
+}
+//-->
+</script>
+      <tr>
+        <td height="300" align="center" valign="top" class="advertiser_links"><a href="publisher?p=campaigns&{params}">Campaigns</a>
+/
+Campaign #{campaignId}
+
+<br>
+<span class="font_red">{sMessage}</span><br />
+		<br />
+		<table width="60%" border="0" align="center" cellpadding="5" cellspacing="0" class="news_advertiser_table">
+          <tr>
+            <td><strong>::: Campaign #{campaignId}</strong></td>
+          </tr>
+          <tr>
+           
+			<td align="center">
+			<table width="80%" border="0" cellpadding="5" cellspacing="0" class="advertiser_table_border">
+              <tr>
+                <td width="50%" align="right"> Name</td>
+                <td>{name}</td>
+              </tr>
+              <tr>
+                <td align="right">Category</td>
+                <td>{category} </td>
+              </tr>
+              <tr>
+                <td align="right">Type</td>
+                <td>{type} </td>
+              </tr>
+              <tr>
+                <td align="right">Price</td>
+                <td>{pricePub}</td>
+              </tr>
+              <tr>
+                <td align="right"> Suppression list file</td>
+                <td class="advertiser_input">{suppFile}
+                  <!-- begin_bSupp --><a href="publisher?p=supp&{params}">Download</a><!-- end_bSupp --></td>
+              </tr>
+              <tr>
+                <td align="right">Updated</td>
+                <td class="advertiser_input">{updated}</td>
+              </tr>
+              <tr>
+                <td align="right">Registered</td>
+                <td class="advertiser_input">{registered}</td>
+              </tr>
+            </table>
+
+			  <br /></td>
+			
+          </tr>
+        </table>
+		<br />
+		<br />
+		<table width="99%" border="0" align="center" cellpadding="5" cellspacing="0" class="news_advertiser_table">
+          <tr>
+            <td><strong>::: Creatives </strong></td>
+          </tr>
+          <tr>
+           
+              <td align="center">
+<!-- begin_creatives -->
+
+
+
+{info} &nbsp;&nbsp;&nbsp;
+<!-- begin_creatives_pager -->
+<!-- begin_creatives_first --><a href="{url}">First</a> <!-- end_creatives_first -->
+<!-- begin_creatives_prev --><a href="{url}">Prev.</a> <!-- end_creatives_prev -->
+<!-- begin_creatives_page -->
+<!-- begin_creatives_link --><a href="{url}">{page}</a> <!-- end_creatives_link -->
+<!-- begin_creatives_curpage --><b>{page}</b> <!-- end_creatives_curpage -->
+<!-- end_creatives_page -->
+<!-- begin_creatives_next --><a href="{url}">Next</a> <!-- end_creatives_next -->
+<!-- begin_creatives_last --><a href="{url}">Last</a> <!-- end_creatives_last -->
+<!-- end_creatives_pager -->
+
+<table border="1" cellpadding="3" cellspacing="0" bordercolor="#B6CFA9" class="advertiser_table_border">
+<tr>
+<td align="center">
+	<!-- begin_creatives_sort_creativeId --><a href="{url}">ID</a> 
+	<!-- begin_creatives_asc_creativeId --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_creatives_asc_creativeId -->
+	<!-- begin_creatives_desc_creativeId --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_creatives_desc_creativeId --><!-- end_creatives_sort_creativeId --></td> 
+<td align="center">
+	<!-- begin_creatives_sort_type --><a href="{url}">Type</a> 
+	<!-- begin_creatives_asc_type --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_creatives_asc_type -->
+	<!-- begin_creatives_desc_type --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_creatives_desc_type --><!-- end_creatives_sort_type --></td> 
+<td align="center">
+	<!-- begin_creatives_sort_registered --><a href="{url}">Registered</a> 
+	<!-- begin_creatives_asc_registered --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_creatives_asc_registered -->
+	<!-- begin_creatives_desc_registered --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_creatives_desc_registered --><!-- end_creatives_sort_registered --></td> 
+<td align="center">
+	<!-- begin_creatives_sort_updated --><a href="{url}">Updated</a> 
+	<!-- begin_creatives_asc_updated --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_creatives_asc_updated -->
+	<!-- begin_creatives_desc_updated --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_creatives_desc_updated --><!-- end_creatives_sort_updated --></td> 
+<td align="center">Preview</td>
+</tr>
+
+<!-- begin_creatives_item -->
+<tr>
+<td align="center"><a href="publisher?p=creative&creativeId={creativeId}&{params}">{creativeId}</a></td>
+<td align="center">{type}</td>
+<td align="center">{registered}</td>
+<td align="center">{updated}</td>
+<td align="center"><a href="javascript:OnPreview({creativeId});">Preview</a></td>
+</tr>
+<!-- end_creatives_item -->
+
+
+<!-- begin_creatives_noitems -->
+<tr>
+<td colspan="5">No creatives</td>
+</tr>
+<!-- end_creatives_noitems -->
+</table>
+
+{info} &nbsp;&nbsp;&nbsp; {pager2}
+
+<!-- end_creatives -->
+
+			  
+			  <br />
+			  <br /></td>
+        </table></td>
+      </tr>
+{footer}

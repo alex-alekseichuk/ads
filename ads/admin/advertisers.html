@@ -1,0 +1,134 @@
+ {header}
+  <tr>
+    <td align="center" valign="top" ><table width="80%" border="0" cellpadding="0" cellspacing="0" class="text">
+      <tr>
+        <td colspan="3"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title_table">
+          <tr>
+            <td width="37"><img src="{HTTP_ROOT}img/tab_l.gif" width="37" height="23" /></td>
+                <td align="left" background="{HTTP_ROOT}img/tabl_bg.gif">Advertisers</td>
+                <td width="5"><img src="{HTTP_ROOT}img/tabl_r.gif" width="5" height="23" /></td>
+              </tr>
+          </table></td>
+        </tr>
+      <tr>
+        <td width="1" background="{HTTP_ROOT}img/grey_dot.gif"><img src="{HTTP_ROOT}img/grey_dot.gif" width="1" height="1" /></td>
+          <td align="center" class="text"><br>
+            <span class="font_red">{sMessage}</span>
+        <table width="95%" border="0" align="center" cellpadding="3" cellspacing="0" class="text">
+                <tr>
+                  <td align="center" >
+                    <a href="admin?p=advertiser&{params}"><strong>Add Advertiser</strong></a><br>
+					
+					<!-- begin_advertisers -->
+{info} &nbsp;&nbsp;&nbsp;
+<!-- begin_advertisers_pager -->
+<!-- begin_advertisers_first --><a href="{url}">First</a> <!-- end_advertisers_first -->
+<!-- begin_advertisers_prev --><a href="{url}">Prev.</a> <!-- end_advertisers_prev -->
+<!-- begin_advertisers_page -->
+<!-- begin_advertisers_link --><a href="{url}">{page}</a> <!-- end_advertisers_link -->
+<!-- begin_advertisers_curpage --><b>{page}</b> <!-- end_advertisers_curpage -->
+<!-- end_advertisers_page -->
+<!-- begin_advertisers_next --><a href="{url}">Next</a> <!-- end_advertisers_next -->
+<!-- begin_advertisers_last --><a href="{url}">Last</a> <!-- end_advertisers_last -->
+<!-- end_advertisers_pager -->               </td>
+                </tr>
+                <tr>
+                  <td align="center" class="text"><table width="100%" cellpadding="5" class="table_border">
+                    <tr class="td_bg">
+                      <td align="center" class="tr_color"><!-- begin_advertisers_sort_advertiserId -->
+                          <a href="{url}">ID</a>
+                          <!-- begin_advertisers_asc_advertiserId -->
+                        <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+                        <!-- end_advertisers_asc_advertiserId -->
+                          <!-- begin_advertisers_desc_advertiserId -->
+                        <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+                        <!-- end_advertisers_desc_advertiserId -->
+                        <!-- end_advertisers_sort_advertiserId --></td>
+                      <td align="center" class="tr_color"><!-- begin_advertisers_sort_email -->
+                          <a href="{url}">Email</a>
+                          <!-- begin_advertisers_asc_email -->
+                        <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+                        <!-- end_advertisers_asc_email -->
+                          <!-- begin_advertisers_desc_email -->
+                        <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+                        <!-- end_advertisers_desc_email -->
+                        <!-- end_advertisers_sort_email --></td>
+                      <td align="center" class="tr_color"><!-- begin_advertisers_sort_passwd -->
+                          <a href="{url}">Password</a>
+                          <!-- begin_advertisers_asc_passwd -->
+                        <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+                        <!-- end_advertisers_asc_passwd -->
+                          <!-- begin_advertisers_desc_passwd -->
+                        <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+                        <!-- end_advertisers_desc_passwd -->
+                        <!-- end_advertisers_sort_passwd --></td>
+                      <td align="center" class="tr_color"><!-- begin_advertisers_sort_name -->
+                          <a href="{url}">Name</a>
+                          <!-- begin_advertisers_asc_name -->
+                        <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+                        <!-- end_advertisers_asc_name -->
+                          <!-- begin_advertisers_desc_name -->
+                        <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+                        <!-- end_advertisers_desc_name -->
+                        <!-- end_advertisers_sort_name --></td>
+                      <td align="center" class="tr_color"><!-- begin_advertisers_sort_company -->
+                          <a href="{url}">Company</a>
+                          <!-- begin_advertisers_asc_company -->
+                        <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+                        <!-- end_advertisers_asc_company -->
+                          <!-- begin_advertisers_desc_company -->
+                        <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+                        <!-- end_advertisers_desc_company -->
+                        <!-- end_advertisers_sort_company --></td>
+                      <td align="center" class="tr_color"><!-- begin_advertisers_sort_status -->
+                          <a href="{url}">Status</a>
+                          <!-- begin_advertisers_asc_status -->
+                        <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+                        <!-- end_advertisers_asc_status -->
+                          <!-- begin_advertisers_desc_status -->
+                        <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+                        <!-- end_advertisers_desc_status -->
+                        <!-- end_advertisers_sort_status --></td>
+                      <td align="center" class="tr_color"><!-- begin_advertisers_sort_registered -->
+                          <a href="{url}">Registered</a>
+                          <!-- begin_advertisers_asc_registered -->
+                        <img border="0" src="{HTTP_ROOT}img/asc.gif" />
+                        <!-- end_advertisers_asc_registered -->
+                          <!-- begin_advertisers_desc_registered -->
+                        <img border="0" src="{HTTP_ROOT}img/desc.gif" />
+                        <!-- end_advertisers_desc_registered -->
+                        <!-- end_advertisers_sort_registered --></td>
+                    </tr>
+                    <!-- begin_advertisers_item -->
+                    <tr>
+                      <td align="center">{advertiserId}</td>
+                      <td align="center"><a href="admin?p=advertiser&advertiserId={advertiserId}&{params}">{email}</a></td>
+                      <td align="center">{passwd}</td>
+                      <td align="center">{name}</td>
+                      <td align="center">{company}</td>
+                      <td align="center">{status}</td>
+                      <td align="center">{registered}</td>
+                    </tr>
+                    <!-- end_advertisers_item -->
+                    <!-- begin_advertisers_noitems -->
+                    <tr>
+                      <td colspan="7">No Advertisers</td>
+                    </tr>
+                    <!-- end_advertisers_noitems -->
+                  </table>
+                  <br></td>
+                </tr>
+                <tr>
+                  <td align="center">{info} &nbsp;&nbsp;&nbsp; {pager2}
+
+<!-- end_advertisers --></td>
+                </tr>
+            </table>
+            <br></td>
+          <td width="1" background="{HTTP_ROOT}img/grey_dot.gif"><img src="{HTTP_ROOT}img/grey_dot.gif" width="1" height="1" /></td>
+        </tr>
+      <tr>
+        <td colspan="3" background="{HTTP_ROOT}img/grey_dot.gif"><img src="{HTTP_ROOT}img/grey_dot.gif" width="1" height="1" /></td>
+        </tr>
+    </table>     </td></tr>
+ {footer}

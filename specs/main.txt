@@ -1,0 +1,167 @@
+adsbucks.com main description
+
+
+adsbucks.com is the db-driven web site where advetisers put up Campaigns and publishers take them and publish.
+there are 3 types of campaigns:
+	CPA (pay per sale)
+	CPC (pay per click)
+	CPM (pay per 1000 views)
+
+files:
+	main.txt - this file
+	database.txt - database structure
+	publisher.txt - description of publisher area of web interface
+	advertiser.txt - description of advertiser area of web interface
+	admin.txt - description of admin web interface
+	questions.txt - discussion history
+	tasks.txt - tasks to do
+	
+
+glossary:
+	advertiser user who can create campaigns and add creatives to them; he pay us the money
+		may be in 3 modes: non-apprived right after creation, active, disabled)
+	campaign is an ad campaign;
+		may be in 3 modes: non-apprived right after creation, active, disabled)
+	creative is a special text (html or plain). each campaign may have several creatives;
+		may be in 3 modes: non-apprived right after creation, active, disabled)
+
+	publisher user who can publish created campaigns; we pay him the money
+
+	admin of the system may edit/add/delete any info
+
+
+
+main structure:
+	1) database (see in database.txt)
+	2) admin web interface (see in admin.txt)
+	3) public web interface
+		3.1) publisher area (see in publisher.txt)
+		3.2) advertiser area (see in advertiser.txt)
+	4) special very fast scripts to handle the action
+	5) sub-system of fake domain names pool
+
+
+public web interface:
+	There are just several page available for any even non-logged in users.
+	Admin web interface is separated from public one.
+	And publisher and advertiser areas are sub-areas of public interface.
+
+	pages:
+		home
+		about
+		contact
+		support
+		privacy
+		faq
+
+	The content of these pages are static HTML.
+	There are links to the publisher area and advertiser area.
+
+
+
+
+tech. notes:
+	Paltform: Linux (*nix)
+	Web Server: Apache + mod_perl
+	Database: MySQL
+
+
+
+
+
+
+ 12/15/2005 18:14:59, Bill
+so, I advertise a Flashlight and for every Flashlight sold, we get paid $5
+
+ 12/15/2005 18:15:22, Bill
+this is called Cost per Acquisition (CPA)
+
+ 12/15/2005 18:15:22, Bill
+or we have an offer to sign up to receive a weekly newsletter and every time someone puts their email address in the signup, then we get paid $1.  this is Cost per Lead CPL
+
+
+
+
+
+special very fast scripts to handle the actions
+
+So, there are 3 types of campaigns and 3 scripts:
+	CPC-(per click)
+		needs clicks handler script
+	CPA-(per sale)
+		needs sale handler script (1x1 pixel)
+		needs clicks handler script
+	CPM-(per 1000 views)
+		needs view handler script (1x1 pixel)
+
+Those scripts don't need session.
+
+
+
+
+
+site folders structure:
+	/
+		/img - common images for the site
+		/supp - suppression lists uploaded by advetiser. Files are like {campaingId}.ext
+		/images - images uploaded by advertiser for specified creative
+			/{creativeId}
+		/perl - folder for mod_perl scripts
+		*.html - HTML templates
+
+
+3 special multi-site scripts should be placed in separate place.
+They should have DB layer to our DB.
+
+
+URL types:
+http://some123.com/view?c=&p=&s=
+http://some123.com/click?c=&p=&s=
+http://some123.com/sale?c=&p=&s=
+
+c - campaignId
+p - publisherId
+s - SubID
+
+
+
+
+
+
+Advertiser add/update creative text.
+Then admin approve it.
+But that HTML text doesn't have 1x1 pixel code to track views
+or correct link for click action.
+So, publisher should download specified HTML text of creative and get the special code (link or 1x1 pixel code)
+and insert it into the HTML text by hand.
+
+
+
+Admin approves publisher,advertiser,campaing,creative,changes in creative,changes in campaing.
+In all cases there email notifications should be sent.
+During 'changes in creative' approve some new parameters values should be copied to actial ones.
+During 'changes in campaing' approve some new parameters values should be copied to actial ones.
+
+
+
+Money in the system:
+	When admin added some payment for publisher
+	then we need to cut that amount from publishers account.
+
+	When admin added some payment for campaing 
+	then we need to add that money to campaign account.
+
+	When some acount is then we need to add some perAction amount to publisher account
+	and cut that money from campaign account.
+	
+	when campaing account is down to $N then admin received email and then admin may disable that campaing but only by hand
+
+
+Reports
+All reports has period form with 'From' (3 select boxes) and 'To'(3 select boxes) fields.
+Or maybe we can use DatePickers?
+Also there are several predefined periods-links: Current Day, Last 7 Days, Current Month, Previous Month.
+An option to download the viewed report in a CSV format.
+Headers (colunms): Campaign ID, Campaign Name, SubID (for specified reports only),
+	Opens (For HTML creatives only), Clicks, Sales or Actions, Payout, Total.
+

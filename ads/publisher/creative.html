@@ -1,0 +1,120 @@
+{header}
+<script language="JavaScript" type="text/javascript" src="../img/check.js"></script>
+<script language="JavaScript">
+<!--
+function OnPreview(bNew)
+{
+	var w = window.open('publisher?p=preview&bNew=' + bNew + '&creativeId={creativeId}', 'creative_{creativeId}_' + bNew);
+	w.focus();
+}
+//-->
+</script>
+      <tr>
+        <td height="300" align="center" valign="top" class="advertiser_links"><a href="publisher?p=campaigns&amp;{params}">Cmpaigns</a> / <a href="publisher?p=campaign&amp;{params}">Campaign #{campaignId}</a> /
+Creative #{creativeId} <br />
+<span class="font_red">{sMessage}</span><br />
+		<br />
+		<table width="60%" border="0" align="center" cellpadding="5" cellspacing="0" class="news_advertiser_table"><script language="JavaScript"><!--var g_nTimeout = 1000;var g_timer = setTimeout("checkSubId();", g_nTimeout);var g_subId = "";var g_bodyText = "{bodyText}";function checkSubId(){	var subId = document.forms["creative"].subId.value;	if (subId != g_subId)	{		var s = "";		if (subId != "")
+		{
+			var s = checkIntField("SubID", subId, 0, 65000);
+			if (s != "")			{				alert("Warning: " + s);				document.forms["creative"].subId.value = "";			}		}		if (s == "")		{			g_subId = subId;			var bodyText = g_bodyText;			while (bodyText.indexOf("-=ss=-") != -1)				bodyText = bodyText.replace("-=ss=-", g_subId);			document.forms["creative"].bodyText.value = bodyText;		}	}	g_timer = setTimeout("checkSubId();", g_nTimeout);}//--></script><form name="creative" onSubmit="return false;">
+          <tr>
+            <td><strong>::: Creative #{creativeId}</strong></td>
+          </tr>
+          <tr>
+			<td align="center">
+			<table width="80%" border="0" cellpadding="5" cellspacing="0" class="advertiser_table_border">
+              <tr>
+
+                <td width="50%" align="right">Type</td>
+
+                <td>{type}</td>
+
+              </tr>
+
+              <tr>
+
+                <td width="50%" align="right">SubID</td>
+
+                <td><input type="text" name="subId" value=""></td>
+
+              </tr>
+
+              <tr>
+                <td align="right">Content</td>
+                <td class="advertiser_textarea"><textarea name="bodyText">{body}</textarea><br><a href="javascript:OnPreview(1)">Preview</a></td>
+              </tr>
+              <tr>
+
+                <td align="right">Updated</td>
+                <td>{updated}</td>
+              </tr>
+              <tr>
+                <td align="right">Registered</td>
+                <td>{registered}</td>
+              </tr>
+            </table>
+			  </td>
+          </tr></form>
+        </table>
+		<br />
+		<br />
+		<table width="60%" border="0" align="center" cellpadding="5" cellspacing="0" class="news_advertiser_table">
+          <tr>
+            <td><strong>::: Attached Files </strong></td>
+          </tr>
+          <tr>
+           
+              <td align="center" class="advertiser_input">
+<!-- begin_imgs -->
+
+ {info} &nbsp;&nbsp;&nbsp;
+<!-- begin_imgs_pager -->
+<!-- begin_imgs_first --><a href="{url}">First</a> <!-- end_imgs_first -->
+<!-- begin_imgs_prev --><a href="{url}">Prev.</a> <!-- end_imgs_prev -->
+<!-- begin_imgs_page -->
+<!-- begin_imgs_link --><a href="{url}">{page}</a> <!-- end_imgs_link -->
+<!-- begin_imgs_curpage --><b>{page}</b> <!-- end_imgs_curpage -->
+<!-- end_imgs_page -->
+<!-- begin_imgs_next --><a href="{url}">Next</a> <!-- end_imgs_next -->
+<!-- begin_imgs_last --><a href="{url}">Last</a> <!-- end_imgs_last -->
+<!-- end_imgs_pager -->
+
+<table width="50%" border="1" cellpadding="3" cellspacing="0" bordercolor="#B6CFA9" class="advertiser_table_border">
+<tr>
+<td align="center">
+	<!-- begin_imgs_sort_imgId --><a href="{url}">ID</a> 
+	<!-- begin_imgs_asc_imgId --><img src="{HTTP_ROOT}img/asc.gif" width="13" height="6" border="0" /><!-- end_imgs_asc_imgId -->
+	<!-- begin_imgs_desc_imgId --><img src="{HTTP_ROOT}img/desc.gif" width="13" height="6" border="0" /><!-- end_imgs_desc_imgId --><!-- end_imgs_sort_imgId --></td> 
+<td align="center">
+	<!-- begin_imgs_sort_name --><a href="{url}">Name</a> 
+	<!-- begin_imgs_asc_name --><img src="{HTTP_ROOT}img/asc.gif" width="13" height="6" border="0" /><!-- end_imgs_asc_name -->
+	<!-- begin_imgs_desc_name --><img src="{HTTP_ROOT}img/desc.gif" width="13" height="6" border="0" /><!-- end_imgs_desc_name --><!-- end_imgs_sort_name --></td> 
+</tr>
+
+<!-- begin_imgs_item -->
+<tr>
+<td align="center">{imgId}</td>
+<td align="center"><a href="{ImgURL}{creativeId}_{name}" target="_blank">{name}</a></td>
+</tr>
+<!-- end_imgs_item -->
+
+
+<!-- begin_imgs_noitems -->
+<tr>
+<td colspan="2">No files</td>
+</tr>
+<!-- end_imgs_noitems -->
+</table>
+
+{info} &nbsp;&nbsp;&nbsp; {pager2}
+
+<!-- end_imgs -->
+
+			  
+			  <br />
+			  <br /></td>
+        </table>
+		<br /></td>
+      </tr>
+{footer}

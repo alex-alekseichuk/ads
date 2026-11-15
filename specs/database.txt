@@ -1,0 +1,189 @@
+adsbucks.com database structure
+
+
+
+states
+	stateId
+	title
+
+countries
+	countryId
+	title
+
+
+
+
+
+advertisers
+	advertiserId PK
+
+	email varchar(128) not null -- unique, used as login
+	password varchar(32) not null
+
+	status int not null default 0 -- 0-not-approved, 1-active, 2-disabled
+
+	name varchar(64) not null
+	company varchar(64) not null
+	address1 varchar(128) not null
+	address2 varchar(128) not null
+	city varchar(64) not null
+	stateId
+	state
+	countryId
+	zip varchar(32) not null
+	phone varchar(64) not null
+	fax varchar(64) not null
+	url varchar(128) not null
+	description varchar(1024) not null
+
+	registered datetime -- when this record was created
+	updated datetime -- when this record was updated last time
+
+
+-- Every adviteser may be not-approved, active or disabled.
+-- Every advertiser has his account. Money on this account should be spent for those clicks.
+
+
+adv_payments
+	advertiserId FK
+	amount money -- +/- money we received from adv.
+	paid datetime -- when it was done
+	notes -- 
+	
+
+
+
+
+categories -- categories of campaigns
+	categoryId
+	title
+
+
+
+domains -- fake domains used for links
+	domainId PK
+	domain varchar(64)
+
+
+
+campaigns
+	campaignId PK
+	advertiserId FK
+	name varchar(64)
+
+	categoryId FK
+	domainId FK
+
+	typeId integer -- 0-CPA (per sale), 1-CPC (per click), 2-CPM (per 1000 views)
+
+	price money
+	proceNew money
+
+	url varchar(128) -- specified url provided by advertiser
+	urlNew varchar(128) -- specified url provided by advertiser
+
+	changesApproved bool	-- 1-text from urlNew was copied to url by admin and approved as well
+							-- for price as well
+
+	status int not null default 0 -- 0-not-approved, 1-active, 2-disabled
+
+	account money not null default 0 -- adv. account should be > 0 to be active
+
+	suppFile varchar(128) null	-- not null if there is some such file uploaded
+								-- it should be saved in some specified folder by name: {campaignId}.ext
+
+	subsId FK -- campaignId that would be treated as this one or null
+
+	registered datetime -- when this record was created
+	updated datetime -- when this record was updated last time
+
+
+
+creatives
+	creativeId PK
+	campaignId FK
+	typeId int not null default 0 -- 0-Plain Text, 1-HTML
+
+	body text -- current to use by publichers
+	bodyNew text -- new one just added by advertiser
+
+	changesApproved bool -- 1-text from bodyNew was copied to body by admin and approved as well
+
+	url varchar(128) -- ?
+
+	registered datetime -- when this record was created
+	updated datetime -- when this record was updated last time
+
+
+
+
+publishers
+	publisherId PK
+	email
+	password
+	name
+	company
+	address 1
+	address 2
+	city
+	stateId
+	state
+	countryId
+	zip
+	hone
+	fax
+	url
+	description
+	registered datetime
+	account money not null default 0 -- how much we should pay to that publisher
+
+
+pub_payments
+	publisherId FK
+	amount money -- +/- how much were paid to that publisher
+	paid datetime -- when it was done
+	notes -- 
+
+
+
+
+
+actions
+	publisherId FK
+	campaignId FK
+	subId integer
+	done date -- date of the click
+
+	views unsigned long not null default 0
+	clicks unsigned long not null default 0
+	sales unsigned long not null default 0
+	
+
+-- BEGIN TRANSACTION
+-- if there is a click then:
+--		if there is such record already exists then just UPDATE counter=counter+1
+--		else INSERT (counter=1)
+-- COMMIT TRANSACTION
+-- or maybe just use MySQL to make all things faster?
+
+
+
+
+
+admins
+	adminId
+	login
+	password
+
+admin_grants -- if there is a record in this table then there is such access for specified admin
+	adminId
+	grantId
+
+grants -- places in admin area to distinguish an access
+	grantId
+	title
+
+options
+	defaultDomainId integer
+
+

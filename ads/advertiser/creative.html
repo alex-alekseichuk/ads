@@ -1,0 +1,208 @@
+{header}
+     <script language="JavaScript" type="text/javascript" src="{HTTP_ROOT}img/check.js"></script>
+<script language="JavaScript">
+<!--
+function OnDeleteCre()
+{
+	if (confirm("Are you sure you want to delete this creative?"))
+	{
+		location='advertiser?p=creative&cmd=delete&{params}';
+	}
+}
+function OnPreview(bNew)
+{
+	var w;
+	if (bNew == 2)
+	{
+		if (document.forms["creative"].bodyNew.value.length > {MaxCreativeLen})
+		{
+			alert("Too large New Body. It should have max. {MaxCreativeLen} chars.");
+			return;
+		}
+		document.forms["preview"].text.value = document.forms["creative"].bodyNew.value;
+		document.forms["preview"].typeId.value = document.forms["creative"].typeId.options[document.forms["creative"].typeId.selectedIndex].value;
+		document.forms["preview"].submit();
+		return;
+	} else {
+		w = window.open('advertiser?p=preview&bNew=' + bNew + '&creativeId={creativeId}', 'creative_{creativeId}_' + bNew);
+	}
+	w.focus();
+}
+function OnSubmit()
+{
+	var sError = "";
+
+	{creative_checks}
+
+	if (sError) {
+		alert("Warning:\n" + sError);
+		return false;
+	} else {
+		return true;
+	}
+}
+//-->
+</script>
+	  <tr>
+        <td height="300" align="center" valign="top" class="advertiser_links">
+
+<a href="advertiser?p=advertiser&{params}">Cmpaigns</a>
+/
+<a href="advertiser?p=campaign&{params}">Campaign</a>
+/
+{sTitle}
+
+
+<br>
+<span class="font_red">{sMessage}</span><br />
+		<br />
+		<table width="60%" border="0" align="center" cellpadding="5" cellspacing="0" class="news_advertiser_table">
+          <tr>
+            <td><strong>::: {sTitle}</strong></td>
+          </tr>
+          <tr>
+
+<form name="preview" action="advertiser?p=preview&bNew=2&{params}" method="post" target="creative_{creativeId}_2">
+<input type="hidden" name="text" value="">
+<input type="hidden" name="typeId" value="">
+</form>
+
+           <form name="creative" action="advertiser?p=creative&{params}" method="post" enctype="multipart/form-data" onSubmit="return OnSubmit();">
+			<td align="center">
+			<table width="80%" border="0" cellpadding="5" cellspacing="0" class="advertiser_table_border">
+              <tr>
+                <td align="right"><input type="hidden" name="cmd" value="{cmd}" />
+                  <input type="hidden" name="creativeId" value="{creativeId}" />
+Type</td>
+                <td class="advertiser_select"><select name="typeId">
+                  {typeOptions}
+                </select>                </td>
+              </tr>
+              <tr>
+                <td align="right">Status</td>
+                <td>{status}</td>
+              </tr>
+              <tr>
+
+                <td align="right">New Body</td>
+                <td class="advertiser_textarea"><textarea name="bodyNew">{bodyNew}</textarea><br><a href="javascript:OnPreview(2);">Preview</a></td>
+
+              </tr>
+              <tr>
+                <td align="right">Updated</td>
+                <td>{updated}</td>
+              </tr>
+              <tr>
+                <td align="right">Registered</td>
+                <td>{registered}</td>
+              </tr>
+              <tr>
+                <td colspan="2" align="center" class="advertiser_btn"><input type="submit" value="{sCmd}">
+<input type="button" value="Cancel" onClick="location='advertiser?p=campaign&{params}';">
+<input type="reset" value="Reset">
+<!-- begin_bDelete --><input type="button" value="Delete" onClick="OnDeleteCre();"><!-- end_bDelete -->
+<!-- begin_bPreview --><input type="button" value="View" onClick="OnPreview(0);"><!-- end_bPreview -->
+
+                </tr>
+            </table>
+			  <br /></td>
+			</form>
+          </tr>
+        </table>
+		<br />
+		<br />
+		<table width="60%" border="0" align="center" cellpadding="5" cellspacing="0" class="news_advertiser_table">
+          <tr>
+            <td><strong>::: Attached Files </strong></td>
+          </tr>
+          <tr>
+           
+              <td align="center" class="advertiser_input">
+<!-- begin_imgs -->
+<script language="JavaScript">
+<!--
+function OnDelete(imgId)
+{
+	if (confirm("Are you sure you want to delete this file?"))
+		location = 'advertiser?p=creative&cmd=delImg&imgId=' + imgId + '&{params}';
+}
+function OnUpload()
+{
+	var sError = "";
+
+	if (document.forms["uploadImg"].imgFile.value == "")
+		sError += "\tChoose some file to upload\n";
+
+	if (sError) {
+		alert("Warning:\n" + sError);
+		return false;
+	} else {
+		return true;
+	}
+}
+//-->
+</script>
+<form name="uploadImg" action="advertiser?p=creative&{params}" method="post" enctype="multipart/form-data" onSubmit="return OnUpload();">
+<input type="hidden" name="cmd" value="uploadImg">
+File: <input name="imgFile" type="file" class="advertiser_input">
+<br>
+<input type="submit" class="advertiser_btn" value="Upload">
+</form>
+</td></tr>
+<tr><td align="center">
+<br>
+
+
+{info} &nbsp;&nbsp;&nbsp;
+<!-- begin_imgs_pager -->
+<!-- begin_imgs_first --><a href="{url}">First</a> <!-- end_imgs_first -->
+<!-- begin_imgs_prev --><a href="{url}">Prev.</a> <!-- end_imgs_prev -->
+<!-- begin_imgs_page -->
+<!-- begin_imgs_link --><a href="{url}">{page}</a> <!-- end_imgs_link -->
+<!-- begin_imgs_curpage --><b>{page}</b> <!-- end_imgs_curpage -->
+<!-- end_imgs_page -->
+<!-- begin_imgs_next --><a href="{url}">Next</a> <!-- end_imgs_next -->
+<!-- begin_imgs_last --><a href="{url}">Last</a> <!-- end_imgs_last -->
+<!-- end_imgs_pager -->
+
+<table width="60%" border="1" cellpadding="3" cellspacing="0" bordercolor="#B6CFA9" class="news_advertiser_table">
+<tr>
+<td align="center">
+	<!-- begin_imgs_sort_imgId --><a href="{url}">ID</a> 
+	<!-- begin_imgs_asc_imgId --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_imgs_asc_imgId -->
+	<!-- begin_imgs_desc_imgId --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_imgs_desc_imgId --><!-- end_imgs_sort_imgId --></td> 
+<td align="center">
+	<!-- begin_imgs_sort_name --><a href="{url}">Name</a> 
+	<!-- begin_imgs_asc_name --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_imgs_asc_name -->
+	<!-- begin_imgs_desc_name --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_imgs_desc_name --><!-- end_imgs_sort_name --></td> 
+<td align="center">&nbsp;</td> 
+</tr>
+
+<!-- begin_imgs_item -->
+<tr>
+<td align="center">{imgId}</td>
+<td align="center"><a href="{ImgURL}{creativeId}_{name}" target="_blank">{name}</a></td>
+<td align="center"><a href="javascript:OnDelete({imgId});">Delete</a></td>
+</tr>
+<!-- end_imgs_item -->
+
+
+<!-- begin_imgs_noitems -->
+<tr>
+<td colspan="3">No files</td>
+</tr>
+<!-- end_imgs_noitems -->
+</table>
+
+{info} &nbsp;&nbsp;&nbsp; {pager2}
+
+<!-- end_imgs -->
+
+			  
+			  <br />
+			  <br /></td>
+        </table>
+		<br /></td>
+      </tr>
+   
+ {footer}

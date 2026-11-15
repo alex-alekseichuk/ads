@@ -1,0 +1,142 @@
+adsbucks.com advertiser web interface
+
+pages:
+	login
+	campaigns - the form to edit/add/delete the advertiser and the list campaigns of this advertiser
+		campaign - the form to edit/add/delete the campaign and the list of creatives of this campaign
+			creative - the form to edit/add/delete the creative
+	profile - the form to edit current advertiser info
+	register - the form to register new advertiser account
+	forgotpwd - the form to remind the password by email
+	report
+
+Pages have the same Header and Footer (includable pages).
+There should be link to the public area of the site.
+There is path in the header like: Home > campaigns > the campaign
+There is menu in the header: Campaigns, Profile, Logout
+There are name, email, account of ther advertiser in the header.
+
+login page:
+	Login page has the form where advertiser should enter login and password to log in.
+	After logout or during session expiration web browser should be redirected to this page.
+	There is the link to register page and the form to forgotpwd page.
+	
+
+campaigns page:
+	there is a list of campaigns of this advertiser
+	campaign list fields:
+		campaign (name, the link to specified campaign page)
+		registered
+		Account
+		creatives (number of creatives)		
+
+campaign page:
+	there are the form to create or edit campaign info
+	and list of creatives
+	form fields:
+		id (label for edit, and 'New Campaign' for create)
+		name
+		type (select box)
+		category (select box)
+		payout (like $0.80 CPA)
+		domain (label)
+
+		Account (label)
+
+		(these 3 are for edit mode only)
+		as read only info:
+			HTML for 1x1 pixel CPA (for CPA only) (with notes how to add SubId; SubID should be unsigned integer)
+		as read only info:
+			HTML for 1x1 pixel CPM (for CPM only) (with notes how to add SubId; SubID should be unsigned integer)
+		as read only info:
+			URL for click action like http://some123.com/click? (for CPC and CPA only) (with notes how to add SubId; SubID should be unsigned integer)
+
+		sub-form for edit mode only (can't upload during creation process)
+			upload/delete/download suppression list file
+
+	form buttons:
+		Cancel
+		Create/Update
+		Apply
+		Enable/Disable - available for disabled/active advertiser
+			Disable (with select drop-down another campaign of the same advertiser)
+	creatives list fields:
+		No. (just number, link to creative page)
+		type (label: Plain text or HTML)
+		Preview (link to preview the creative in popup IE window)
+
+
+creative page:
+	there is just the form and list of uploaded images + form to upload new image.
+	fields:
+		No. (label with number for edit, and 'New Creative' for create)
+		Type (select box: Plain text, HTML)
+		Text (textarea: text of that) 
+
+	buttons:
+		Cancel
+		Create/Update
+		Preview - in popup IE window
+	list of uploaded images + form to upload one more.
+	also ability to download/delete image.
+
+
+profile page:
+	there is the form to edit current advertiser account
+	form fields:
+		ID (label)
+		full name
+		company name
+		email address (label)
+		password
+		address 1
+		address 2
+		city
+		state
+		country
+		zip/postal code
+		telephone
+		fax
+		website url
+		website description (text area)
+		Registered (label)
+		Updated (label)		
+	form buttons:
+		Cancel - go back to advertisers page
+		Update - submit form changes and go back to campaigns page
+		Apply - submit form changes and stay on the same page
+
+
+register page:
+	there is the form to register new advertiser account
+	form fields:
+		full name
+		company name
+		email address
+		password
+		address 1
+		address 2
+		city
+		state
+		country
+		zip/postal code
+		telephone
+		fax
+		website url
+		website description (text area)
+	form buttons:
+		Cancel - go back to advertisers page
+		Register - submit form registration
+
+forgotpwd page:
+	fields:
+		email
+	buttons:
+		Send password to email
+		Cancel
+
+
+report
+	Their report will only show actions for their specific campaigns for the 
+	time period selected.  SubId information will not be available.
+

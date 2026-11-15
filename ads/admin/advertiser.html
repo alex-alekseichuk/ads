@@ -1,0 +1,294 @@
+<html>
+<head>
+<link href="{HTTP_ROOT}img/style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript" type="text/javascript" src="{HTTP_ROOT}img/check.js"></script>
+<script language="JavaScript">
+<!--
+function OnDelete()
+{
+	if (confirm("Are you sure you want to delete this account and all his campaigns?"))
+	{
+		location='admin?p=advertiser&cmd=delete&{params}';
+	}
+}
+function OnSubmit()
+{
+	var sError = "";
+
+	{advertiser_checks}
+
+	if (document.forms["advertiser"].countryId.value == 219)
+	{
+		sError += checkSelectField("State", document.forms["advertiser"].stateId.selectedIndex);
+	} else {
+		sError += checkField("Non USA State", document.forms["advertiser"].state.value, true, 2, 64);
+	}
+
+
+	if (sError) {
+		alert("Warning:\n" + sError);
+		return false;
+	} else {
+		return true;
+	}
+}
+function OnApprove()
+{
+	if (! OnSubmit())
+		return;
+	document.forms['advertiser'].cmd.value='approve';
+	document.forms['advertiser'].submit();
+}
+//-->
+</script>
+</head>
+<body>
+<table width="100%" border="0" cellpadding="5" cellspacing="0" class="text">
+  <tr>
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="53"><img src="{HTTP_ROOT}img/h1.gif" width="53" height="33" /></td>
+          <td align="center" background="{HTTP_ROOT}img/h_bg.gif"><table border="0" cellpadding="3" cellspacing="0" class="topmenu">
+              <tr align="center">
+                <td><a href="admin?p=advertisers">Advertisers</a></td>
+                <td valign="top"><img src="{HTTP_ROOT}img/break.gif" width="12" height="8" /></td>
+                <td><a href="admin?p=publishers">Publishers</a></td>
+                <td valign="top"><img src="{HTTP_ROOT}img/break.gif" width="12" height="8" /></td>
+                <td><a href="admin?p=rep_campaigns">Reports</a></td>
+                <td valign="top"><img src="{HTTP_ROOT}img/break.gif" width="12" height="8" /></td>
+                <td><a href="admin?p=admins">Admins</a></td>
+                <td valign="top"><img src="{HTTP_ROOT}img/break.gif" width="12" height="8" /></td>
+                <td><a href="admin?p=domains">Domains</a></td>
+                <td valign="top"><img src="{HTTP_ROOT}img/break.gif" width="12" height="8" /></td>
+                <td><a href="admin?p=options">Options</a></td>
+                <td valign="top"><img src="{HTTP_ROOT}img/break.gif" width="12" height="8" /></td>
+                <td><a href="admin?p=login&amp;cmd=logout">Logout</a></td>
+              </tr>
+            </table></td>
+          <td width="53"><img src="{HTTP_ROOT}img/h2.gif" width="53" height="33" /></td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td align="center" valign="top" >
+	<a href="admin?p=advertisers&amp;{params}">Advertisers</a> /
+      {sTitle}<br>
+      <br>
+      <table border="0" cellpadding="0" cellspacing="0" class="text">
+        <tr>
+          <td colspan="3"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title_table">
+              <tr>
+                <td width="37"><img src="{HTTP_ROOT}img/tab_l.gif" width="37" height="23" /></td>
+                <td align="left" background="{HTTP_ROOT}img/tabl_bg.gif">Advertiser</td>
+                <td width="5"><img src="{HTTP_ROOT}img/tabl_r.gif" width="5" height="23" /></td>
+              </tr>
+            </table></td>
+        </tr>
+        <tr>
+          <td width="1" background="{HTTP_ROOT}img/grey_dot.gif"><img src="{HTTP_ROOT}img/grey_dot.gif" width="1" height="1" /></td>
+          <td align="center" class="text"><br>
+            {sMessage}
+            <form name="advertiser" action="admin?p=advertiser&{params}" method="post" onSubmit="return OnSubmit();">
+<input type="hidden" name="cmd" value="{cmd}">
+<input type="hidden" name="advertiserId" value="{advertiserId}">
+              <table width="40%" align="center" cellpadding="3" class="table_border">
+                <tr>
+                  <td align="right" >Email</td>
+                  <td align="left" class="input"><input type="text" name="email" value="{email}" /></td>
+                </tr>
+                <tr>
+                  <td align="right" class="text">Password</td>
+                  <td align="left" class="input"><input name="passwd" type="text" class="input" value="{passwd}" /></td>
+                </tr>
+                <tr>
+                  <td align="right">Status</td>
+                  <td align="left" class="select"><select name="statusId">{statusOptions}</select>                  </td>
+                </tr>
+                <tr>
+                  <td align="right">Name</td>
+                  <td align="left" class="input"><input type="text" name="name" value="{name}" /></td>
+                </tr>
+                <tr>
+                  <td align="right">Company</td>
+                  <td align="left" class="input"><input type="text" name="company" value="{company}" /></td>
+                </tr>
+                <tr>
+                  <td align="right">Address 1</td>
+                  <td align="left" class="input"><input type="text" name="address1" value="{address1}" /></td>
+                </tr>
+                <tr>
+                  <td align="right">Address 2</td>
+                  <td align="left" class="input"><input type="text" name="address2" value="{address2}" /></td>
+                </tr>
+                <tr>
+                  <td align="right">City</td>
+                  <td align="left" class="input"><input type="text" name="city" value="{city}" /></td>
+                </tr>
+                <tr>
+                  <td align="right">State</td>
+                  <td align="left" class="select"><select name="stateId">{statesOptions}</select>                  </td>
+                </tr>
+                <tr>
+                  <td align="right">Non USA State</td>
+                  <td align="left" class="input"><input type="text" name="state" value="{state}" /></td>
+                </tr>
+                <tr>
+                  <td align="right">Country</td>
+                  <td align="left" class="select"><select name="countryId">{countriesOptions}</select>                  </td>
+                </tr>
+                <tr>
+                  <td align="right">ZIP</td>
+                  <td align="left" class="input"><input type="text" name="zip" value="{zip}" /></td>
+                </tr>
+                <tr>
+                  <td align="right">Phone</td>
+                  <td align="left" class="input"><input type="text" name="phone" value="{phone}" /></td>
+                </tr>
+                <tr>
+                  <td align="right">Fax</td>
+                  <td align="left" class="input"><input type="text" name="fax" value="{fax}" /></td>
+                </tr>
+                <tr>
+                  <td align="right">Url</td>
+                  <td align="left" class="input"><input type="text" name="urlAdv" value="{urlAdv}" /></td>
+                </tr>
+                <tr>
+                  <td align="right">Description</td>
+                  <td align="left" class="input"><textarea name="description">{description}</textarea></td>
+                </tr>
+                <tr>
+                  <td align="center">&nbsp;</td>
+                  <td align="left">Registered {registered}</td>
+                </tr>
+                <tr>
+                  <td colspan="2" align="center" class="btn"><input type="submit" value="{sCmd}">
+<input type="button" value="Cancel" onClick="location='admin?p=advertisers&{params}';">
+<!-- begin_bDelete --><input type="button" value="Delete" onClick="OnDelete();"><!-- end_bDelete -->
+<!-- begin_bApprove --><input type="button" value="Approve" onClick="OnApprove();"><!-- end_bApprove -->
+				  </td>
+                </tr>
+              </table>
+            </form>
+			
+<!-- begin_campaigns -->
+<br>
+<br>
+
+Campaigns
+<br>
+
+<a href="admin?p=campaign&{params}">Add Campaign</a>
+<br>
+<br>
+{info} &nbsp;&nbsp;&nbsp;
+<!-- begin_campaigns_pager -->
+<!-- begin_campaigns_first --><a href="{url}">First</a> <!-- end_campaigns_first -->
+<!-- begin_campaigns_prev --><a href="{url}">Prev.</a> <!-- end_campaigns_prev -->
+<!-- begin_campaigns_page -->
+<!-- begin_campaigns_link --><a href="{url}">{page}</a> <!-- end_campaigns_link -->
+<!-- begin_campaigns_curpage --><b>{page}</b> <!-- end_campaigns_curpage -->
+<!-- end_campaigns_page -->
+<!-- begin_campaigns_next --><a href="{url}">Next</a> <!-- end_campaigns_next -->
+<!-- begin_campaigns_last --><a href="{url}">Last</a> <!-- end_campaigns_last -->
+<!-- end_campaigns_pager -->
+
+&nbsp;
+<table cellpadding="5" class="table_border">
+<tr class="td_bg">
+<td align="center" class="tr_color">
+	<!-- begin_campaigns_sort_campaignId --><a href="{url}">ID</a> 
+	<!-- begin_campaigns_asc_campaignId --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_campaigns_asc_campaignId -->
+	<!-- begin_campaigns_desc_campaignId --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_campaigns_desc_campaignId --><!-- end_campaigns_sort_campaignId --></td> 
+<td align="center" class="tr_color">
+	<!-- begin_campaigns_sort_name --><a href="{url}">Name</a> 
+	<!-- begin_campaigns_asc_name --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_campaigns_asc_name -->
+	<!-- begin_campaigns_desc_name --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_campaigns_desc_name --><!-- end_campaigns_sort_name --></td> 
+<td align="center" class="tr_color">
+	<!-- begin_campaigns_sort_category --><a href="{url}">Category</a> 
+	<!-- begin_campaigns_asc_category --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_campaigns_asc_category -->
+	<!-- begin_campaigns_desc_category --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_campaigns_desc_category --><!-- end_campaigns_sort_category --></td> 
+<td align="center" class="tr_color">
+	<!-- begin_campaigns_sort_type --><a href="{url}">Type</a> 
+	<!-- begin_campaigns_asc_type --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_campaigns_asc_type -->
+	<!-- begin_campaigns_desc_type --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_campaigns_desc_type --><!-- end_campaigns_sort_type --></td> 
+<td align="center" class="tr_color">
+	<!-- begin_campaigns_sort_status --><a href="{url}">Status</a> 
+	<!-- begin_campaigns_asc_status --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_campaigns_asc_status -->
+	<!-- begin_campaigns_desc_status --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_campaigns_desc_status --><!-- end_campaigns_sort_status --></td> 
+<td align="center" class="tr_color">
+	<!-- begin_campaigns_sort_price --><a href="{url}">Price</a> 
+	<!-- begin_campaigns_asc_price --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_campaigns_asc_price -->
+	<!-- begin_campaigns_desc_price --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_campaigns_desc_price --><!-- end_campaigns_sort_price --></td> 
+<td align="center" class="tr_color">
+	<!-- begin_campaigns_sort_urlActual --><a href="{url}">Url</a> 
+	<!-- begin_campaigns_asc_urlActual --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_campaigns_asc_urlActual -->
+	<!-- begin_campaigns_desc_urlActual --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_campaigns_desc_urlActual --><!-- end_campaigns_sort_urlActual --></td> 
+<td align="center" class="tr_color">
+	<!-- begin_campaigns_sort_account --><a href="{url}">Account</a> 
+	<!-- begin_campaigns_asc_account --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_campaigns_asc_account -->
+	<!-- begin_campaigns_desc_account --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_campaigns_desc_account --><!-- end_campaigns_sort_account --></td> 
+<td align="center" class="tr_color">
+	<!-- begin_campaigns_sort_domain --><a href="{url}">Domain</a> 
+	<!-- begin_campaigns_asc_domain --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_campaigns_asc_domain -->
+	<!-- begin_campaigns_desc_domain --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_campaigns_desc_domain --><!-- end_campaigns_sort_domain --></td> 
+<td align="center" class="tr_color">
+	<!-- begin_campaigns_sort_registered --><a href="{url}">Registered</a> 
+	<!-- begin_campaigns_asc_registered --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_campaigns_asc_registered -->
+	<!-- begin_campaigns_desc_registered --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_campaigns_desc_registered --><!-- end_campaigns_sort_registered --></td> 
+<td align="center" class="tr_color">
+	<!-- begin_campaigns_sort_updated --><a href="{url}">Updated</a> 
+	<!-- begin_campaigns_asc_updated --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_campaigns_asc_updated -->
+	<!-- begin_campaigns_desc_updated --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_campaigns_desc_updated --><!-- end_campaigns_sort_updated --></td> 
+</tr>
+
+<!-- begin_campaigns_item -->
+<tr>
+<td align="center">{campaignId}</td>
+<td align="center"><a href="admin?p=campaign&campaignId={campaignId}&{params}">{name}</a></td>
+<td align="center">{category}</td>
+<td align="center">{type}</td>
+<td align="center">{status}</td>
+<td align="center">{price}</td>
+<td align="center">{urlActual}</td>
+<td align="center">{account}</td>
+<td align="center">{domain}</td>
+<td align="center">{registered}</td>
+<td align="center">{updated}</td>
+</tr>
+<!-- end_campaigns_item -->
+
+
+<!-- begin_campaigns_noitems -->
+<tr>
+<td colspan="11" class="font_red">No campaigns</td>
+</tr>
+<!-- end_campaigns_noitems -->
+</table>
+
+<br>
+{info} &nbsp;&nbsp;&nbsp; {pager2}
+
+<!-- end_campaigns -->		  <br>
+<br></td>
+          <td width="1" background="{HTTP_ROOT}img/grey_dot.gif"><img src="{HTTP_ROOT}img/grey_dot.gif" width="1" height="1" /></td>
+        </tr>
+      <tr>
+        <td colspan="3" background="{HTTP_ROOT}img/grey_dot.gif"><img src="{HTTP_ROOT}img/grey_dot.gif" width="1" height="1" /></td>
+        </tr>
+        
+      </table><br>
+    </td>
+  </tr>
+  <tr>
+    <td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="footer">
+        <tr>
+          <td background="{HTTP_ROOT}img/fot_dot.gif"><img src="{HTTP_ROOT}img/fot_dot.gif" width="1" height="1" /></td>
+        </tr>
+        <tr>
+          <td height="30" align="center">2006 &copy; Admin area</td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+</body>
+</html>

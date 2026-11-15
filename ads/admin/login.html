@@ -1,0 +1,45 @@
+{header}
+
+  <tr>
+    <td height="500" align="center" valign="middle" class="text_link"><table width="40%" border="0" cellpadding="0" cellspacing="0" class="text">
+      <tr>
+        <td colspan="3"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title_table">
+          <tr>
+            <td width="37"><img src="{HTTP_ROOT}img/tab_l.gif" width="37" height="23" /></td>
+                <td align="left" background="{HTTP_ROOT}img/tabl_bg.gif">Login</td>
+                <td width="5"><img src="{HTTP_ROOT}img/tabl_r.gif" width="5" height="23" /></td>
+              </tr>
+          </table></td>
+        </tr>
+      <tr>
+        <td width="1" background="{HTTP_ROOT}img/grey_dot.gif"><img src="{HTTP_ROOT}img/grey_dot.gif" width="1" height="1" /></td>
+          <td align="center" class="text"><br>
+            <span class="font_red">{sMessage}            </span>
+            <form action="admin?p=login&cmd=login" method="post">
+            <table width="80%" border="0" align="center" cellpadding="3" cellspacing="0" class="text">
+              <tr>
+                <td width="43%" align="right" class="text_link"><input type="hidden" name="cmd" value="{cmd}" />
+                  <input type="hidden" name="adminId" value="{adminId}" />
+Login</td>
+                <td width="57%" align="left" class="input"><input type="text" name="login"></td>
+              </tr>
+              <tr>
+                <td align="right" class="text"> Password</td>
+                <td align="left" class="input"><input type="password" name="password"></td>
+              </tr>
+              <tr class="btn">
+                <td colspan="2" align="center"><input name="Login" type="submit" value="Login">                </td>
+              </tr>
+            </table>
+</form>
+			
+            <br></td>
+          <td width="1" background="{HTTP_ROOT}img/grey_dot.gif"><img src="{HTTP_ROOT}img/grey_dot.gif" width="1" height="1" /></td>
+        </tr>
+      <tr>
+        <td colspan="3" background="{HTTP_ROOT}img/grey_dot.gif"><img src="{HTTP_ROOT}img/grey_dot.gif" width="1" height="1" /></td>
+        </tr>
+    </table></td>
+  </tr>
+ {footer}
+ 

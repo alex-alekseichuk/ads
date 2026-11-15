@@ -1,0 +1,88 @@
+{header}
+  <tr>
+    <td align="center" valign="top" class="text_link"><table width="60%" border="0" cellpadding="0" cellspacing="0" class="text">
+      <tr>
+        <td colspan="3"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title_table">
+          <tr>
+            <td width="37"><img src="{HTTP_ROOT}img/tab_l.gif" width="37" height="23" /></td>
+                <td align="left" background="{HTTP_ROOT}img/tabl_bg.gif">Admins</td>
+                <td width="5"><img src="{HTTP_ROOT}img/tabl_r.gif" width="5" height="23" /></td>
+              </tr>
+          </table></td>
+        </tr>
+      <tr>
+        <td width="1" background="{HTTP_ROOT}img/grey_dot.gif"><img src="{HTTP_ROOT}img/grey_dot.gif" width="1" height="1" /></td>
+          <td align="center" class="text"><br>
+            <span class="font_red">{sMessage}</span>
+        <table width="80%" border="0" align="center" cellpadding="3" cellspacing="0" class="text">
+                <tr>
+                  <td align="center" class="text_link">
+				  <!-- begin_admins -->
+                    <a href="admin?p=admin&{params}"><strong>Add Admin</strong></a> {info} &nbsp;&nbsp;&nbsp;
+                    <!-- begin_admins_pager -->
+                    <!-- begin_admins_first -->
+                    <a href="{url}">First</a>
+                    <!-- end_admins_first -->
+                    <!-- begin_admins_prev -->
+                    <a href="{url}">Prev.</a>
+                    <!-- end_admins_prev -->
+                    <!-- begin_admins_page -->
+                    <!-- begin_admins_link -->
+                    <a href="{url}">{page}</a>
+                    <!-- end_admins_link -->
+                    <!-- begin_admins_curpage -->
+                    <b>{page}</b>
+                    <!-- end_admins_curpage -->
+                    <!-- end_admins_page -->
+                    <!-- begin_admins_next -->
+                    <a href="{url}">Next</a>
+                    <!-- end_admins_next -->
+                    <!-- begin_admins_last -->
+                    <a href="{url}">Last</a>
+                    <!-- end_admins_last -->
+                    <!-- end_admins_pager -->                  </td>
+                </tr>
+                <tr>
+                  <td align="center" class="text"><table align="center" cellpadding="5" class="table_border">
+                      <tr class="td_bg">
+                        <td align="center" class="td_bg">
+						<!-- begin_admins_sort_adminId --><a href="{url}">ID</a> 
+	<!-- begin_admins_asc_adminId --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_admins_asc_adminId -->
+	<!-- begin_admins_desc_adminId --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_admins_desc_adminId --><!-- end_admins_sort_adminId --></td>
+                        <td align="center" class="td_bg">
+						<!-- begin_admins_sort_login --><a href="{url}">Login</a> 
+	<!-- begin_admins_asc_login --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_admins_asc_login -->
+	<!-- begin_admins_desc_login --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_admins_desc_login --><!-- end_admins_sort_login --></td>
+                        <td align="center" class="td_bg">
+						<!-- begin_admins_sort_passwd --><a href="{url}">Password</a> 
+	<!-- begin_admins_asc_passwd --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_admins_asc_passwd -->
+	<!-- begin_admins_desc_passwd --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_admins_desc_passwd --><!-- end_admins_sort_passwd --></td>
+                    </tr>
+                      <!-- begin_admins_item -->
+                      <tr>
+                        <td align="center">{adminId}</td>
+                        <td align="center" class="text_link"><a href="{link}{adminId}&{params}">{login}</a></td>
+                        <td align="center">{passwd}</td>
+                      </tr>
+                      <!-- end_admins_item -->
+                      <!-- begin_admins_noitems -->
+                      <tr>
+                        <td colspan="3" class="font_red">No Admin accounts</td>
+                      </tr>
+                      <!-- end_admins_noitems -->
+                    </table>
+                      <br></td>
+                </tr>
+                <tr>
+                  <td align="center">{info} &nbsp;&nbsp;&nbsp; {pager2}
+                    <!-- end_admins --></td>
+                </tr>
+              </table>
+            <br></td>
+          <td width="1" background="{HTTP_ROOT}img/grey_dot.gif"><img src="{HTTP_ROOT}img/grey_dot.gif" width="1" height="1" /></td>
+        </tr>
+      <tr>
+        <td colspan="3" background="{HTTP_ROOT}img/grey_dot.gif"><img src="{HTTP_ROOT}img/grey_dot.gif" width="1" height="1" /></td>
+        </tr>
+    </table>      <a href="admin?p=publishers"></a> <a href="admin?p=rep_campaigns"></a> <a href="admin?p=admins"></a> <a href="admin?p=domains"></a> <a href="admin?p=options"></a> <a href="admin?p=login&amp;cmd=logout"></a></td></tr>
+{footer}

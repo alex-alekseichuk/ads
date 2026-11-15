@@ -1,0 +1,230 @@
+adsbucks.com  questions
+
+
+1) are there any limits like max. number of campaigns for one advertiser account
+	or max. number of creatives for one campaign ?
+A: It would be better to provide some constants to limit :
+	a) max number of campaigns for one advertiser
+	b) max number of creatives for one campaing
+	c) max number of bytes in the text of creative
+
+2) Should admin area have several admin accounts like: user1:111, user2:222, user3:333 ?
+
+3) Is it possible to stop (temporary disable) not whole advertiser account but some of his campaigns?
+4) what should we use as state and country fields? just text values? or indexes from some pre-defined tables?
+5) Should we register and approve new publisher automatically?
+6) We need to make clear payments sub-system. what online payment system should we use?
+7) should we save logs about changes?
+8) what kind of reports do we need for publisher, advertiser, admin?
+
+
+9) should we save info about when and what IP was clicked from or we need to save only number of click for specified creative from specified publisher?
+A: just numbers. but unique in 24 hours by cookies.
+
+10)
+	>2) Should admin area have several admin accounts like: user1:111, user2:222,
+	>user3:333 ?
+	~~~~~~~~~~~~ Yes, we should be able to see up admin accounts as we need 
+	them and be able to give different access to the admin.   Example, we may a
+	an admin that only see the accounting reports, but cannot upload creatives
+	or an admin that can upload creative and not see the accounting.
+Am I correct:
+	there are several access areas:
+		a) see the accounting reports
+		b) upload creatives
+		c) ...
+	And each admin (registered login/password account that may log in via admin web interface)
+	has the set of permisions attributes for each of those acceess areas like:
+		user1:111
+			a) allowed
+			b) denied
+			c) ...
+		user2:222
+			a) denied
+			b) allowed
+			c) ...
+?			
+A: yes
+
+
+11) Maybe we should implement such advanced feature later? I mean for now we need to concentrate on main core functionality.
+A: yes
+
+
+12)
+	>3) Is it possible to stop (temporary disable) not whole advertiser account
+	>but some of his campaigns?
+	~~~~~~~~~~~~ Yes, but if we do disable, we will need a method of 
+	redirecting his campaigns to other active campaigns.  This will also be 
+	true if an advertiser leaves the system and we need to redirect all their 
+	campaigns.
+What do you mean redirect?
+There is a campaign. It's stopped. So, we just don't count clicks by that campaign. that's all.
+There is nothing else possible to do with that campaign except of re-activate it.
+
+A: we need to be able to assign substitute campaign/creative for any campaign we are going to delete or disable.
+
+
+12.1) We need to be able to save some local images like <img src='1.jpg'>
+A: yes, advanced feature
+
+
+
+13) Should we able to disable/enable some specified creatives in the campaign?
+A: yes
+
+14)
+	>4) what should we use as state and country fields? just text values? or 
+	>indexes from some pre-defined tables?
+	~~~~~~~~~~~~  Tables
+Should we use just the set of USA states as list of	possible states to choose?
+A: yes
+
+15) Do we need functionality to provide some non-USA state or province for people from another countries?
+A: yes
+
+
+16)
+	>5) Should we register and approve new publisher automatically?
+	~~~~~~~~~~~~ No, all approvals will be done manually.
+So, admin should be able to approve:
+	a) new advertiser
+	b) new publisher
+	c) new campaigns
+	d) new creative
+right?
+
+A:yes
+
+
+16.1) suppression list for each campaign
+A: advertiser may upload such list and publisher may download
+
+17)
+	>6) We need to make clear payments sub-system. what online payment system 
+	>should we use?
+	~~~~~~~~~~~~ No, all payments will be made manually either though paypal or
+	a checking account.
+Just to be clear. So, we need 3 different ways to apply payments in our system:
+	a) admin by hand just add/remove some amount from account and place some comments
+	b) admin fill some form to register the payment by check we received
+	c) advertiser can pay online via paypal
+Am I correct? Are #a and #b the same?
+
+A: All payments are offline in admin area only. maybe we need Quick Books.
+so, we have 2 kinds of actions:
+1) clicks (when user just click on the link)
+2) sales (when some item was sold. we need to provide html code with specified 1x1 pixel to track it)
+
+
+18)
+	>7) should we save logs about changes?
+	~~~~~~~~~~~~ What information will be in the logs?
+What information do we need to have in the logs?
+For example:
+	a) payements history will be separated from regular logs. I mean these logs are prety specific.
+	b) users/campaigns/creatives creation/modification events
+A: we will implement after basic functionality
+
+
+
+
+
+
+2005-12-19:
+
+
+19)
+About reports
+	> "To and From" Date Range boxes with Pull Down for Month, Day and Year and 
+	> buttons to automatically select a date range for: Current Day, Last 7 Days,
+So, we need to distinguish the click and show actions by the date.
+right?
+A: Yes
+
+20)
+	> Headers showing: Campaign ID, Campaign Description,  SubID, Opens (For HTML
+Do you mean 'Campaign Name' instead of 'Campaign Description'?
+Because 'Campaign Description' is an optional long textare field.
+A: Yes
+
+21)
+	> Headers showing: Campaign ID, Campaign Description,  SubID, Opens (For HTML
+	> emails only), Clicks, Sales or Actions, Payout, Total
+What are the fields: SubID, Sales or Actions, Payout, Total?
+Is Total a column in the CSV report or the line under it?
+
+A1: We should be able to distinguish clicks and opens by SubId as well
+A2: there are 3 types of campaigns:
+	CPA (Cost per Acquition),
+	CPC ( Cost per Click)
+	CPM ( Cost per 1,000 Impressions).
+A3: there should be colunms: Actions, Payout (price), Total (calculated)
+
+
+
+22) Am I right that each line of the report is regarding some campaign?
+A: yes
+
+
+23)
+	> this page, there should be a pull down box containing each Publisher. This
+How many publishers may be in that drop down box? I mean some max. number.
+
+A: put some paged list of publishers then admin will click on specified one.
+
+
+
+24)
+	> System Summary and System Detail - What information are you collecting to 
+	> report on?  Up time, down time, log in stats?
+What information do you need us to collect?
+A: maybe next release
+
+
+25) should we show the reports like N records per page?
+A: yes, 50 records per page.
+
+
+
+
+
+2005-12-20:
+
+26) Do we need distinguish of campaigns by some categories?
+A: yes
+
+27) Whould it be ok if we would allow advertiser to upload only ZIP-archive files (with .zip extension) as suppression list ?
+A: any ext.
+
+28) There is some specified campaign URL that advertiser provided us for the campaign.
+	In case of CPC-campaign we should forward user's web browser to that page.
+	In case of CPM we should not do anything except of count views.
+	In case of CPA we should do the same as CPC but count not clicks but sales by 1x1 pixel.
+	right?
+
+! ! ! clicks by campaign ! ! !
+
+29) When admin or advertiser wants to disable some campaign then he can specify some another campaign to substitute this one.
+	Should it be some another campaign of the same advertiser?
+A: no, we need to be able to redirect it to another campaign
+
+30) As I understand, for every creative of CPA should be some 1x1 pixel code. right?
+A: no, for one campaign
+
+31) Do we need to use SSL for login pages?
+A: yes
+
+
+
+2005-12-21:
+
+32) Correct me plz. if I'm wrong:
+	When some action is done then we need to decrement some payout amount from advertiser account.
+	Then when adv. account <= 0 then we should stop all campaigns of that advertiser
+	because there is no more money and mark all campaigns and creatives of that adv. as disabled.
+	And advertiser disabled as well.
+	Right?
+
+	Should we disable counting for disabled campaigns?
+

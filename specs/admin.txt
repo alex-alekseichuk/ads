@@ -1,0 +1,223 @@
+adsbucks.com admin web interface
+
+all pages of admin interface has a_ prefix.
+
+pages:
+	login
+	home
+	advertisers - the grid of advertisers
+		advertiser - the form to edit/add/delete the advertiser and the list campaigns of this advertiser
+			campaign - the form to edit/add/delete the campaign and the list of creatives of this campaign
+				creative - the form to edit/add/delete the creative
+		adv_payments - history list with form to add payment
+	publishers - the grid of publishers
+		publisher - the form to edit/add/delete the publisher
+		pub_payments - history list with form to add payment
+	reports - the menu of the reports
+		report1 - Campaigns (without SubID)
+		report2 - Publishers  (without SubID)
+			report3 - Campaigns for each publisher (without SubID)
+		report4 - Advertisers (without SubID)
+	admins - list of admin user accounts
+		admin - form to edit info about specified admin
+				and allow/deny some privileges (by 2 select boxes)
+	domains - domains list (with number of campaigns assigned to specified domain)
+		domain - the form to add/delete/edit domain record
+	options - the form to update the values
+
+Pages have the same Header and Footer (includable pages).
+There is main menu in the header: Advertisers, Publishers
+There is path in the header like: Home > Advertisers > user@test.com > the campaign > creative #3
+Grids have sorter and pager functionalities.
+Lists have not sorter and pager. Lists have always the same sort order.
+
+login page:
+	Login page has the form where admin should enter login and password to log in.
+	After logout or during session expiration web browser should be redirected to this page.
+
+home page:
+	There is some common info.
+	Do we need it?
+	
+advertisers page:
+	there are filter form to search and grid of advertisers
+	filter fields:
+		ID (text box)
+		Name (text box)
+		Active (checkbox)
+		Disabled (checkbox)
+		Not-approved (checkbox)
+	grid columns:
+		ID
+		Name (link to advertiser page)
+		Status (Not-approved, active, disable)
+		Account (like $125.00)
+		Registered (date of registration)
+		Updated (date of last edit or status change)
+		Company
+		Email
+		Phone
+		[web site] (just the image-link to their web site, no sorting)
+				
+
+advertiser page:
+	there is the form to add new or edit existed advertiser account
+	also, there is a list of campaigns of this advertiser
+	form fields:
+		ID (label for edit, and 'New Advertiser' for create)
+		full name
+		company name
+		email address
+		password
+		address 1
+		address 2
+		city
+		state
+		country
+		zip/postal code
+		telephone
+		fax
+		website url
+		website description (text area)
+		Registered (label)
+		Updated (label)		
+	form buttons:
+		Cancel - go back to advertisers page
+		Create/Update - submit form changes and go back to advertisers page
+		Apply - submit form changes and stay on the same page
+		Active - available for disabled advertiser
+		Enable/Disable - available for disabled/active advertiser
+			Disable (with input id of another campaign)
+		Approve - available for not-approved advertiser
+	campaign list fields:
+		campaign (name, the link to specified campaign page)
+		registered
+		creatives (number of creatives)		
+
+campaign page:
+	there are the form to create or edit campaign info
+	and list of creatives
+	form fields:
+		id (label for edit, and 'New Campaign' for create)
+		name
+		type (select box)
+		category (select box)
+		payout (like $0.80 CPA)
+		domain (drop-down)
+
+		Account (label. maybe with special textbox and button 'add/sub'?)
+
+		(these 3 are for edit mode only)
+		as read only info:
+			HTML for 1x1 pixel CPA (for CPA only) (with notes how to add SubId; SubID should be unsigned integer)
+		as read only info:
+			HTML for 1x1 pixel CPM (for CPM only) (with notes how to add SubId; SubID should be unsigned integer)
+		as read only info:
+			URL for click action like http://some123.com/click? (for CPC and CPA only) (with notes how to add SubId; SubID should be unsigned integer)
+
+		sub-form for edit mode only (can't upload during creation process)
+			upload/delete/download suppression list file
+
+	form buttons:
+		Cancel
+		Create/Update
+		Apply
+		Approve - available for not-approved advertiser
+		Enable/Disable - available for disabled/active advertiser
+			Disable (with input id of another campaign)
+	creatives list fields:
+		No. (just number, link to creative page)
+		type (label: Plain text or HTML)
+		Preview (link to preview the creative in popup IE window)
+
+
+creative page:
+	there is just the form and list of uploaded images + form to upload new image.
+	fields:
+		No. (label with number for edit, and 'New Creative' for create)
+		Type (select box: Plain text, HTML)
+		Text (textarea: text of that) 
+
+	buttons:
+		Cancel
+		Create/Update
+		Approve - available for not-approved advertiser
+		Preview - in popup IE window
+	list of uploaded images + form to upload one more.
+	also ability to download/delete image.
+
+
+publisers page:
+	there are filter form to search and grid of publishers
+	filter fields:
+		ID (text box)
+		Name (text box)
+	grid columns:
+		ID
+		Name (link to publisher page)
+		Status
+		Account (like $125.45)
+		Registered (date of registration)
+		Company
+		Email
+		Phone
+		[web site] (just the image-link to their web site, no sorting)
+
+publiser page:
+	there is the form to add new or edit existed publiser account
+	form fields:
+		ID (label for edit, and 'New Publiser' for create)
+		full name
+		company name
+		email address
+		password
+		Status (select box)
+		Account (label, maybe with special textbox and button 'add/sub'?)
+		address 1
+		address 2
+		city
+		state
+		country
+		zip/postal code
+		telephone
+		fax
+		website url
+		website description (text area)
+		Registered (label)
+	form buttons:
+		Cancel - go back to advertisers page
+		Create/Update - submit form changes and go back to advertisers page
+		Enable/Disable - available for disabled/active advertiser
+		Approve - available for not-approved advertiser
+
+
+
+
+Reports pages:
+
+
+Page 1 - Summary of all Campaigns for time period selected. This page will
+
+have the same data as the Publisher reporting page 1. No SubID information
+
+required.
+
+Page 2 - Summary of all Publishers for time period selected. No SubID 
+information required.
+
+Page 3 - Details for each Publishers for time period selected. To access 
+this page, there should be a pull down box containing each Publisher. This
+
+page will have the same data as the Publisher reporting page 1. No SubID 
+information required.
+
+Page 4 - Details for each Advertiser for time period selected. This page 
+will be like the Publisher reporting page 1, but listed by Advertiser.  If
+
+the Advertiser has more than one campaign running, then each campaign will
+
+listed under the appropriate Advertiser. If more than one campaign is 
+listed, there will be a sub total for that Advertiser before the next 
+Advertiser is listed. No SubID information required.
+
+

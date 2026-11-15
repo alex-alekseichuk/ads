@@ -1,0 +1,191 @@
+<html>
+<head>
+<meta http-equiv="Cache-Control" content="no-cache,post-check=0,pre-check=0,no-cache" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="Thu,01Dec199416:00:00GMT" />
+
+<link href="../img/style.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/javascript" src="../img/check.js"></script>
+<script language="JavaScript">
+<!--
+function OnSubmit()
+{
+	var sError = "";
+
+	{publisher_checks}
+
+	if (document.forms["publisher"].passwd.value != document.forms["publisher"].passwd2.value)
+	{
+		sError += "\tEntered passwords are not the same\n";
+	}
+
+	if (document.forms["publisher"].countryId.value == 219)
+	{
+		sError += checkSelectField("State", document.forms["publisher"].stateId.selectedIndex);
+	} else {
+		sError += checkField("Non USA State", document.forms["publisher"].state.value, true, 2, 64);
+	}
+
+
+	if (sError) {
+		alert("Warning:\n" + sError);
+		return false;
+	} else {
+		return true;
+	}
+}
+//-->
+</script>
+</head>
+<body class="body_advertiser">
+<table width="740" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><table border="0" cellpadding="3" cellspacing="0" class="topmenu_advertiser">
+      <tr>
+        <!-- begin_mainMenu -->
+        <td><img src="{HTTP_ROOT}img/bullettopmenu.gif" width="6" height="6" /></td>
+        <td><a href="publisher?p=campaigns">Campaigns</a></td>
+        <td><img src="{HTTP_ROOT}img/bullettopmenu.gif" width="6" height="6" /></td>
+        <td><a href="publisher?p=rep_campaigns">Report</a></td>
+        <td><img src="{HTTP_ROOT}img/bullettopmenu.gif" width="6" height="6" /></td>
+        <td><a href="publisher?p=payments">Payments</a></td>
+        <td><img src="{HTTP_ROOT}img/bullettopmenu.gif" width="6" height="6" /></td>
+        <td><a href="publisher?p=login&amp;cmd=logout">Logout</a></td>
+        <td width="6">&nbsp;</td>
+        <td class="topmenu_advertiser_text" >{email}</td>
+        <!-- end_mainMenu -->
+        <!-- begin_loginMenu -->
+        <td><img src="{HTTP_ROOT}img/bullettopmenu.gif" width="6" height="6" /></td>
+        <td><a href="publisher?p=register">Register</a></td>
+        <td><img src="{HTTP_ROOT}img/bullettopmenu.gif" width="6" height="6" /></td>
+        <td><a href="publisher?p=login">Login</a></td>
+        <!-- end_loginMenu -->
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="main_advertiser_table">
+      <tr>
+        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="6"></td>
+          </tr>
+          <tr>
+            <td height="30" valign="middle" class="top_advertiser_line">
+			
+		
+			<table width="100%" border="0" cellpadding="0" cellspacing="0" class="top_advertiser_line_text2">
+              
+			  <tr valign="middle">
+                <td align="left" class="top_advertiser_line_text1">&nbsp;&nbsp;&nbsp;&nbsp;www.adsbucks.com</td>
+                </tr>
+            </table>			</td>
+          </tr>
+          <tr>
+            <td><img src="../img/shadow.gif" width="174" height="8"></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td height="300" align="center" valign="top">
+		<span class="font_red">{sMessage}</span><br />
+		<br />
+		<table width="60%" border="0" align="center" cellpadding="5" cellspacing="0" class="news_advertiser_table">
+          <tr>
+            <td><strong>::: Publisher Registration </strong></td>
+          </tr>
+          <tr>
+           <form name="publisher" action="publisher?p=register&{params}" method="post" onSubmit="return OnSubmit();">
+			<td align="center">
+			<table width="80%" border="0" cellpadding="5" cellspacing="0" class="advertiser_table_border">
+              <tr>
+                <td align="right"><input type="hidden" name="cmd" value="register" />
+Email</td>
+                <td class="advertiser_input"><input type="text" name="email" value="{email}" /></td>
+              </tr>
+              <tr>
+                <td align="right">Password</td>
+                <td class="advertiser_input"><input type="password" name="passwd" value="" /></td>
+              </tr>
+              <tr>
+                <td align="right">Re-enter Password</td>
+                <td class="advertiser_input"><input type="password" name="passwd2" value="" /></td>
+              </tr>
+              <tr>
+                <td align="right">Name</td>
+                <td class="advertiser_input"><input type="text" name="name" value="{name}" /></td>
+              </tr>
+              <tr>
+                <td align="right">Company</td>
+                <td class="advertiser_input"><input type="text" name="company" value="{company}" /></td>
+              </tr>
+              <tr>
+                <td align="right">Address 1</td>
+                <td class="advertiser_input"><input type="text" name="address1" value="{address1}" /></td>
+              </tr>
+              <tr>
+                <td align="right">Address 2 </td>
+                <td class="advertiser_input"><input type="text" name="address2" value="{address2}" /></td>
+              </tr>
+              <tr>
+                <td align="right">City</td>
+                <td class="advertiser_input"><input type="text" name="city" value="{city}" /></td>
+              </tr>
+              <tr>
+                <td align="right">State</td>
+                <td class="advertiser_select"><select name="stateId">
+                  {statesOptions}
+                </select>                </td>
+              </tr>
+              <tr>
+                <td align="right">Non USA State</td>
+                <td class="advertiser_input"><input type="text" name="state" value="{state}" /></td>
+              </tr>
+              <tr>
+                <td align="right">Country</td>
+                <td class="advertiser_select"><select name="countryId">
+                  {countriesOptions}
+                </select>
+                </td>
+              </tr>
+              <tr>
+                <td align="right">ZIP</td>
+                <td class="advertiser_input"><input type="text" name="zip" value="{zip}" /></td>
+              </tr>
+              <tr>
+                <td align="right">Phone</td>
+                <td class="advertiser_input"><input type="text" name="phone" value="{phone}" /></td>
+              </tr>
+              <tr>
+                <td align="right">Fax</td>
+                <td class="advertiser_input"><input type="text" name="fax" value="{fax}" /></td>
+              </tr>
+              <tr>
+                <td align="right">URL</td>
+                <td class="advertiser_input"><input type="text" name="urlPub" value="{urlPub}" /></td>
+              </tr>
+              <tr>
+                <td colspan="2" align="center" class="advertiser_btn"><input name="submit" type="submit" value="Register" />
+                  <input name="reset" type="reset" value="Reset" /></td>
+                </tr>
+            </table>
+			  <br /></td>
+			</form>
+          </tr>
+        </table>
+		</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td height="20" align="center" class="advertiser_footer">&copy;2004 Good Karma, Inc. All Rights Reserved.</td>
+  </tr>
+</table>
+</body>
+</html>

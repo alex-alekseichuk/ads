@@ -1,0 +1,140 @@
+{header}
+<script language="JavaScript" src="{HTTP_ROOT}img/DatePicker.js" type="text/javascript"></script>
+<script language="JavaScript">
+<!--
+
+var dpFrom = new Object(); 
+dpFrom.format           = "yyyy-mm-dd";
+dpFrom.style            = "./DatePicker.css";
+dpFrom.relativePathPart = "{HTTP_ROOT}img/";
+
+var dpTo = new Object(); 
+dpTo.format           = "yyyy-mm-dd";
+dpTo.style            = "./DatePicker.css";
+dpTo.relativePathPart = "{HTTP_ROOT}img/";
+
+//-->
+</script>
+      <tr>
+        <td height="300" align="center" valign="top" class="advertiser_links"><span class="font_red">{sMessage}</span><br />
+		<br />
+		<table width="60%" border="0" align="center" cellpadding="5" cellspacing="0" class="news_advertiser_table">
+          <tr>
+            <td><strong>::: Campaigns Report</strong></td>
+          </tr>
+          <tr>
+          <form name="filter" action="publisher?p=rep_campaigns" method="post">
+			<td align="center">
+			<table border="0" cellpadding="5" cellspacing="0" class="advertiser_table_border">
+              <tr>
+                <td align="right"><input type="hidden" name="cmd" value="filter" />
+From</td>
+                <td class="advertiser_input"><input type="text" name="dFrom" value="{dFrom}" />
+                  <a class="img" href="javascript:showDatePicker('dpFrom','filter','dFrom');"><img border="0" src="{HTTP_ROOT}img/DatePicker.gif" /></a></td>
+              </tr>
+              <tr>
+                <td align="right">To</td>
+                <td class="advertiser_input"><input type="text" name="dTo" value="{dTo}" />
+                  <a class="img" href="javascript:showDatePicker('dpTo','filter','dTo');"><img border="0" src="{HTTP_ROOT}img/DatePicker.gif" /></a></td>
+              </tr>
+              <tr>
+                <td colspan="2" align="center" class="advertiser_btn"><input type="submit" value="Filter"></td>
+                </tr>
+            </table>
+			  <br /></td>
+			</form>
+          </tr>
+        </table>
+		<br />
+		<br />
+		<table width="99%" border="0" align="center" cellpadding="5" cellspacing="0" class="news_advertiser_table">
+        
+          <tr>
+           
+              <td align="center"><a href="publisher?p=rep_campaigns&cmd=all">All</a>
+<a href="publisher?p=rep_campaigns&cmd=today">Today</a>
+<a href="publisher?p=rep_campaigns&cmd=7days">Last 7 days</a>
+<a href="publisher?p=rep_campaigns&cmd=month">Current Month</a>
+<a href="publisher?p=rep_campaigns&cmd=prevmonth">Previous Month</a>
+
+
+<!-- begin_campaigns -->
+<br>
+<br>
+
+Campaigns <a href="publisher?p=rep_campaigns&cmd=csv&{params}">CSV</a>
+<br>
+
+
+{info} &nbsp;&nbsp;&nbsp;
+<!-- begin_campaigns_pager -->
+<!-- begin_campaigns_first --><a href="{url}">First</a> <!-- end_campaigns_first -->
+<!-- begin_campaigns_prev --><a href="{url}">Prev.</a> <!-- end_campaigns_prev -->
+<!-- begin_campaigns_page -->
+<!-- begin_campaigns_link --><a href="{url}">{page}</a> <!-- end_campaigns_link -->
+<!-- begin_campaigns_curpage --><b>{page}</b> <!-- end_campaigns_curpage -->
+<!-- end_campaigns_page -->
+<!-- begin_campaigns_next --><a href="{url}">Next</a> <!-- end_campaigns_next -->
+<!-- begin_campaigns_last --><a href="{url}">Last</a> <!-- end_campaigns_last -->
+<!-- end_campaigns_pager -->
+
+<table width="90%" border="1" cellpadding="3" cellspacing="0" class="news_advertiser_table" bordercolor="#B6CFA9" >
+<tr>
+<td align="center">
+	<!-- begin_campaigns_sort_campaignId --><a href="{url}">ID</a> 
+	<!-- begin_campaigns_asc_campaignId --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_campaigns_asc_campaignId -->
+	<!-- begin_campaigns_desc_campaignId --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_campaigns_desc_campaignId --><!-- end_campaigns_sort_campaignId --></td> 
+<td align="center">
+	<!-- begin_campaigns_sort_name --><a href="{url}">Campaign</a> 
+	<!-- begin_campaigns_asc_name --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_campaigns_asc_name -->
+	<!-- begin_campaigns_desc_name --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_campaigns_desc_name --><!-- end_campaigns_sort_name --></td> 
+<td align="center">
+	<!-- begin_campaigns_sort_views --><a href="{url}">Views</a> 
+	<!-- begin_campaigns_asc_views --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_campaigns_asc_views -->
+	<!-- begin_campaigns_desc_views --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_campaigns_desc_views --><!-- end_campaigns_sort_views --></td> 
+<td align="center">
+	<!-- begin_campaigns_sort_clicks --><a href="{url}">Clicks</a> 
+	<!-- begin_campaigns_asc_clicks --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_campaigns_asc_clicks -->
+	<!-- begin_campaigns_desc_clicks --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_campaigns_desc_clicks --><!-- end_campaigns_sort_clicks --></td> 
+<td align="center">
+	<!-- begin_campaigns_sort_sales --><a href="{url}">Sales</a> 
+	<!-- begin_campaigns_asc_sales --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_campaigns_asc_sales -->
+	<!-- begin_campaigns_desc_sales --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_campaigns_desc_sales --><!-- end_campaigns_sort_sales --></td> 
+<td align="center">
+	<!-- begin_campaigns_sort_price --><a href="{url}">Payout</a> 
+	<!-- begin_campaigns_asc_price --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_campaigns_asc_price -->
+	<!-- begin_campaigns_desc_price --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_campaigns_desc_price --><!-- end_campaigns_sort_price --></td> 
+<td align="center">
+	<!-- begin_campaigns_sort_total --><a href="{url}">Total</a> 
+	<!-- begin_campaigns_asc_total --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_campaigns_asc_total -->
+	<!-- begin_campaigns_desc_total --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_campaigns_desc_total --><!-- end_campaigns_sort_total --></td> 
+</tr>
+
+<!-- begin_campaigns_item -->
+<tr>
+<td align="center">{campaignId}</td>
+<td align="center"><a href="publisher?p=campaign&campaignId={campaignId}&{params}">{name}</a></td>
+<td align="center">{views}</td>
+<td align="center">{clicks}</td>
+<td align="center">{sales}</td>
+<td align="center">{price}</td>
+<td align="center">{total}</td>
+</tr>
+<!-- end_campaigns_item -->
+
+
+<!-- begin_campaigns_noitems -->
+<tr>
+<td colspan="7">No campaigns</td>
+</tr>
+<!-- end_campaigns_noitems -->
+</table>
+
+{info} &nbsp;&nbsp;&nbsp; {pager2}
+
+<!-- end_campaigns -->
+			  
+</td>
+          </table></td>
+      </tr>
+{footer}

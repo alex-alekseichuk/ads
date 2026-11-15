@@ -1,0 +1,193 @@
+<html>
+<head>
+<link href="{HTTP_ROOT}img/style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript" src="{HTTP_ROOT}img/DatePicker.js" type="text/javascript"></script>
+<script language="JavaScript">
+<!--
+
+var dpFrom = new Object(); 
+dpFrom.format           = "yyyy-mm-dd";
+dpFrom.style            = "./DatePicker.css";
+dpFrom.relativePathPart = "{HTTP_ROOT}img/";
+
+var dpTo = new Object(); 
+dpTo.format           = "yyyy-mm-dd";
+dpTo.style            = "./DatePicker.css";
+dpTo.relativePathPart = "{HTTP_ROOT}img/";
+
+//-->
+</script>
+</head>
+
+<body>
+<table width="100%" border="0" cellpadding="5" cellspacing="0" class="text">
+  <tr>
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="53"><img src="{HTTP_ROOT}img/h1.gif" width="53" height="33" /></td>
+        <td align="center" background="{HTTP_ROOT}img/h_bg.gif"><table border="0" cellpadding="3" cellspacing="0" class="topmenu">
+          <tr align="center">
+            <td><a href="admin?p=advertisers">Advertisers</a></td>
+            <td valign="top"><img src="{HTTP_ROOT}img/break.gif" width="12" height="8" /></td>
+            <td><a href="admin?p=publishers">Publishers</a></td>
+			<td valign="top"><img src="{HTTP_ROOT}img/break.gif" width="12" height="8" /></td>
+            <td><a href="admin?p=rep_campaigns">Reports</a></td>
+			<td valign="top"><img src="{HTTP_ROOT}img/break.gif" width="12" height="8" /></td>
+            <td><a href="admin?p=admins">Admins</a></td>
+			<td valign="top"><img src="{HTTP_ROOT}img/break.gif" width="12" height="8" /></td>
+            <td><a href="admin?p=domains">Domains</a></td>
+			<td valign="top"><img src="{HTTP_ROOT}img/break.gif" width="12" height="8" /></td>
+            <td><a href="admin?p=options">Options</a></td>
+			<td valign="top"><img src="{HTTP_ROOT}img/break.gif" width="12" height="8" /></td>
+            <td><a href="admin?p=login&amp;cmd=logout">Logout</a></td>
+          </tr>
+        </table></td>
+        <td width="53"><img src="{HTTP_ROOT}img/h2.gif" width="53" height="33" /></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td align="center" valign="top" class="text_link"><a href="admin?p=rep_campaigns&{params}"> Campaigns</a> &nbsp;&nbsp;
+Publishers
+&nbsp;&nbsp; <a href="admin?p=rep_advertisers&{params}">Advertisers</a> <br>
+<br>
+<table width="80%" border="0" cellpadding="0" cellspacing="0" class="text">
+  <tr>
+    <td colspan="3"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="title_table">
+      <tr>
+        <td width="37"><img src="{HTTP_ROOT}img/tab_l.gif" width="37" height="23" /></td>
+                <td align="left" background="{HTTP_ROOT}img/tabl_bg.gif">Publishers Report</td>
+                <td width="5"><img src="{HTTP_ROOT}img/tabl_r.gif" width="5" height="23" /></td>
+              </tr>
+      </table></td>
+        </tr>
+  <tr>
+    <td width="1" background="{HTTP_ROOT}img/grey_dot.gif"><img src="{HTTP_ROOT}img/grey_dot.gif" width="1" height="1" /></td>
+              <td align="center" class="text"><span class="font_red"><br>
+              {sMessage} </span><br>
+  <table width="95%" border="0" align="center" cellpadding="3" cellspacing="0" class="text">
+    <tr>
+      <td align="center" class="text">
+<form name="filter" action="admin?p=rep_publishers" method="post">
+	  <table cellpadding="5" class="table_border">
+        <tr>
+          <td align="right">
+            <input type="hidden" name="cmd" value="filter">
+From</td>
+          <td align="left" class="input">
+            <input type="text" name="dFrom" value="{dFrom}"> <a class="img" href="javascript:showDatePicker('dpFrom','filter','dFrom');"><img src="{HTTP_ROOT}img/DatePicker.gif" border="0" align="absbottom"></a> </td>
+          </tr>
+        
+        <tr>
+          <td align="right">To</td>
+          <td align="left" class="input"><input type="text" name="dTo" value="{dTo}">  <a class="img" href="javascript:showDatePicker('dpTo','filter','dTo');"><img src="{HTTP_ROOT}img/DatePicker.gif" border="0" align="absbottom"></a></td>
+          </tr>
+       
+        <tr>
+          <td colspan="2" align="center" class="btn"><input name="submit" type="submit" value="Filter"></td>
+        </tr>
+        </table>
+</form>
+          <br></td>
+    </tr>
+  </table>
+  <table width="95%" border="0" align="center" cellpadding="3" cellspacing="0" class="text">
+    <tr>
+      <td align="center" class="text_link">
+<a href="admin?p=rep_publishers&cmd=all">All</a>&nbsp;&nbsp;&nbsp; 
+<a href="admin?p=rep_publishers&cmd=today">Today</a>&nbsp;&nbsp;&nbsp; 
+<a href="admin?p=rep_publishers&cmd=7days">Last 7 days</a>&nbsp;&nbsp;&nbsp; 
+<a href="admin?p=rep_publishers&cmd=month">Current Month</a>&nbsp;&nbsp;&nbsp; 
+<a href="admin?p=rep_publishers&cmd=prevmonth">Previous Month</a>
+
+
+<!-- begin_publishers -->
+<br>
+<br>
+
+Publishers <a href="admin?p=rep_publishers&cmd=csv&{params}">CSV</a>
+<br>
+<br>
+
+
+{info} &nbsp;&nbsp;&nbsp;
+<!-- begin_publishers_pager -->
+<!-- begin_publishers_first --><a href="{url}">First</a> <!-- end_publishers_first -->
+<!-- begin_publishers_prev --><a href="{url}">Prev.</a> <!-- end_publishers_prev -->
+<!-- begin_publishers_page -->
+<!-- begin_publishers_link --><a href="{url}">{page}</a> <!-- end_publishers_link -->
+<!-- begin_publishers_curpage --><b>{page}</b> <!-- end_publishers_curpage -->
+<!-- end_publishers_page -->
+<!-- begin_publishers_next --><a href="{url}">Next</a> <!-- end_publishers_next -->
+<!-- begin_publishers_last --><a href="{url}">Last</a> <!-- end_publishers_last -->
+<!-- end_publishers_pager -->
+
+  <table width="100%" cellpadding="3" class="table_border">
+    <tr>
+      <td align="center" class="td_bg"><!-- begin_publishers_sort_publisherId --><a href="{url}">ID</a> 
+	<!-- begin_publishers_asc_publisherId --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_publishers_asc_publisherId -->
+	<!-- begin_publishers_desc_publisherId --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_publishers_desc_publisherId --><!-- end_publishers_sort_publisherId --></td>
+      <td align="center" class="td_bg"><!-- begin_publishers_sort_company --><a href="{url}">Company</a> 
+	<!-- begin_publishers_asc_company --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_publishers_asc_company -->
+	<!-- begin_publishers_desc_company --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_publishers_desc_company --><!-- end_publishers_sort_company --></td>
+      <td align="center" class="td_bg"><!-- begin_publishers_sort_views --><a href="{url}">Views</a> 
+	<!-- begin_publishers_asc_views --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_publishers_asc_views -->
+	<!-- begin_publishers_desc_views --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_publishers_desc_views --><!-- end_publishers_sort_views --></td>
+      <td align="center" class="td_bg"><!-- begin_publishers_sort_clicks --><a href="{url}">Clicks</a> 
+	<!-- begin_publishers_asc_clicks --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_publishers_asc_clicks -->
+	<!-- begin_publishers_desc_clicks --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_publishers_desc_clicks --><!-- end_publishers_sort_clicks --></td>
+      <td align="center" class="td_bg"><!-- begin_publishers_sort_sales --><a href="{url}">Sales</a> 
+	<!-- begin_publishers_asc_sales --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_publishers_asc_sales -->
+	<!-- begin_publishers_desc_sales --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_publishers_desc_sales --><!-- end_publishers_sort_sales --></td>
+      <td align="center" class="td_bg"><!-- begin_publishers_sort_price --><a href="{url}">Payout</a> 
+	<!-- begin_publishers_asc_price --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_publishers_asc_price -->
+	<!-- begin_publishers_desc_price --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_publishers_desc_price --><!-- end_publishers_sort_price --></td>
+      <td align="center" class="td_bg"><!-- begin_publishers_sort_total --><a href="{url}">Total</a> 
+	<!-- begin_publishers_asc_total --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_publishers_asc_total -->
+	<!-- begin_publishers_desc_total --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_publishers_desc_total --><!-- end_publishers_sort_total --></td>
+	<td class="td_bg">&nbsp;</td>
+    </tr>
+<!-- begin_publishers_item -->
+<tr>
+<td align="center">{publisherId}</td>
+<td align="center"><a href="admin?p=publisher&publisherId={publisherId}&{params}">{company}</a></td>
+<td align="center">{views}</td>
+<td align="center">{clicks}</td>
+<td align="center">{sales}</td>
+<td align="center">{price}</td>
+<td align="center">{total}</td>
+<td align="center"><a href="admin?p=rep_publisher&publisherId={publisherId}&{params}">Details</a></td>
+</tr>
+<!-- end_publishers_item -->
+<!-- begin_publishers_noitems -->
+<tr>
+<td colspan="8" class="font_red">No publishers</td>
+</tr>
+<!-- end_publishers_noitems -->
+  </table></td>
+              </tr>
+    <tr>
+      <td align="center" class="text_link">{info} &nbsp;&nbsp;&nbsp; {pager2}
+       <!-- end_publishers --></td>
+              </tr>
+    </table>
+          <br></td>
+              <td width="1" background="{HTTP_ROOT}img/grey_dot.gif"><img src="{HTTP_ROOT}img/grey_dot.gif" width="1" height="1" /></td>
+        </tr>
+  <tr>
+    <td colspan="3" background="{HTTP_ROOT}img/grey_dot.gif"><img src="{HTTP_ROOT}img/grey_dot.gif" width="1" height="1" /></td>
+        </tr>
+</table> </td></tr>
+  <tr>
+    <td><table width="100%" border="0" cellpadding="0" cellspacing="0" class="footer">
+      <tr>
+        <td background="{HTTP_ROOT}img/fot_dot.gif"><img src="{HTTP_ROOT}img/fot_dot.gif" width="1" height="1" /></td>
+      </tr>
+      <tr>
+        <td height="30" align="center">2006 &copy; Admin area</td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,93 @@
+{header}
+<script language="JavaScript" type="text/javascript" src="{HTTP_ROOT}img/check.js"></script>
+<script language="JavaScript">
+function OnSubmit()
+{
+	var sError = "";
+
+	{campaign_checks}
+
+	if (sError) {
+		alert("Warning:\n" + sError);
+		return false;
+	} else {
+		return true;
+	}
+}
+//-->
+</script>      <tr>
+        <td height="300" align="center" valign="top" class="advertiser_links">
+		<a href="advertiser?p=campaigns&{params}">Campaigns</a>
+/
+{sTitle}
+
+<br>
+Campaign
+<br>
+
+
+		<span class="font_red">{sMessage}</span><br />
+		<br />
+		<table width="60%" border="0" align="center" cellpadding="5" cellspacing="0" class="news_advertiser_table">
+          <tr>
+            <td><strong>::: {sTitle}</strong></td>
+          </tr>
+          <tr>
+          <form name="campaign" action="advertiser?p=campaign&{params}" method="post" enctype="multipart/form-data" onSubmit="return OnSubmit();">
+<input type="hidden" name="cmd" value="{cmd}">
+<input type="hidden" name="advertiserId" value="{advertiserId}">
+			<td align="center">
+			<table width="80%" border="0" cellpadding="5" cellspacing="0" class="advertiser_table_border">
+              <tr>
+                <td align="right"><input type="hidden" name="cmd" value="{cmd}" />
+                  <input type="hidden" name="campaignId" value="{campaignId}" />
+Name</td>
+                <td class="advertiser_input"><input type="text" name="name" value="{name}" /></td>
+              </tr>
+              <tr>
+                <td align="right">Category</td>
+                <td class="advertiser_select"><select name="categoryId">
+                  {categoryOptions}
+                </select>                </td>
+              </tr>
+              <tr>
+                <td align="right">Domain</td>
+                <td>{domain}</td>
+              </tr>
+              <tr>
+                <td align="right">Type</td>
+                <td class="advertiser_select"><select name="typeId">
+                  {typeOptions}
+                </select>                </td>
+              </tr>
+              <tr>
+                <td align="right">Price</td>
+                <td class="advertiser_input"><input type="text" name="priceNew" value="{priceNew}" /></td>
+              </tr>
+              <tr>
+                <td align="right">Url</td>
+                <td class="advertiser_input"><input type="text" name="urlNew" value="{urlNew}" /></td>
+              </tr>
+              <tr>
+                <td align="right">Suppression list file</td>
+                <td class="advertiser_input">{suppFile}
+                  <!-- begin_bSupp -->
+                  <a href="advertiser?p=supp&amp;{params}">Download</a> <a href="advertiser?p=campaign&amp;cmd=delSupp&amp;{params}">Delete</a>
+                  <!-- end_bSupp --></td>
+              </tr>
+              <tr>
+                <td align="right">&nbsp;</td>
+                <td class="advertiser_input"><input type="file" name="suppFile" /></td>
+              </tr>
+              <tr>
+                <td colspan="2" align="center" class="advertiser_btn"><input type="submit" value="{sCmd}">
+<input type="button" value="Cancel" onClick="location='advertiser?p=campaigns&{params}';"></td>
+                </tr>
+            </table>
+			  <br /></td>
+			</form>
+          </tr>
+        </table>
+		<br /></td>
+      </tr>
+{footer}

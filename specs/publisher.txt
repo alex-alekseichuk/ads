@@ -1,0 +1,75 @@
+adsbucks.com publisher web interface
+
+pages:
+	login
+	report1 - all campaigns without SubID distinguish
+		report2 - specified campaign with SubID distinguish
+	profile
+	register
+	forgotpwd	
+
+
+Pages have the same Header and Footer (includable pages).
+There is main menu in the header: Reports, Profile, Logout
+There is path in the header like: Home > reports
+
+login page:
+	Login page has the form where admin should enter login and password to log in.
+	After logout or during session expiration web browser should be redirected to this page.
+
+
+profile page:
+	there is the form to edit current publiser account
+	form fields:
+		ID (label)
+		full name
+		company name
+		email address (label)
+		password
+		Account (label)
+		address 1
+		address 2
+		city
+		state
+		country
+		zip/postal code
+		telephone
+		fax
+		website url
+		website description (text area)
+		Registered (label)
+	form buttons:
+		Cancel - go back to advertisers page
+		Update - submit form changes and go back to advertisers page
+
+
+register page:
+	there is the form to register new publiser account
+	form fields:
+		full name
+		company name
+		email address
+		password
+		address 1
+		address 2
+		city
+		state
+		country
+		zip/postal code
+		telephone
+		fax
+		website url
+		website description (text area)
+		Registered (label)
+	form buttons:
+		Cancel - go back to advertisers page
+		Register - submit form registration
+
+forgotpwd page:
+	fields:
+		email
+	buttons:
+		Send password to email
+		Cancel
+
+

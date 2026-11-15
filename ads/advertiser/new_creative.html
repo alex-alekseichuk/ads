@@ -1,0 +1,89 @@
+{header}
+<script language="JavaScript" type="text/javascript" src="{HTTP_ROOT}img/check.js"></script>
+<script language="JavaScript">
+<!--
+function OnPreview(bNew)
+
+{
+	var w;
+	if (bNew == 2)
+	{
+		if (document.forms["creative"].bodyNew.value.length > {MaxCreativeLen})
+		{
+			alert("Too large New Body. It should have max. {MaxCreativeLen} chars.");
+			return;
+		}
+		document.forms["preview"].text.value = document.forms["creative"].bodyNew.value;
+		document.forms["preview"].typeId.value = document.forms["creative"].typeId.options[document.forms["creative"].typeId.selectedIndex].value;
+		document.forms["preview"].submit();
+		return;
+	} else {
+		w = window.open('advertiser?p=preview&bNew=' + bNew + '&creativeId={creativeId}', 'creative_{creativeId}_' + bNew);
+	}
+	w.focus();
+}
+
+
+function OnSubmit()
+{
+	var sError = "";
+
+	{creative_checks}
+
+	if (sError) {
+		alert("Warning:\n" + sError);
+		return false;
+	} else {
+		return true;
+	}
+}
+//-->
+</script>      <tr>
+        <td height="300" align="center" valign="top" class="advertiser_links">
+		<a href="advertiser?p=advertiser&{params}">Cmpaigns</a>
+/
+<a href="advertiser?p=campaign&{params}">Campaign</a>
+/
+{sTitle}
+
+<br />
+
+
+		<span class="font_red">{sMessage}</span><br />
+		<br />
+		<table width="60%" border="0" align="center" cellpadding="5" cellspacing="0" class="news_advertiser_table">
+          <tr>
+            <td><strong>::: {sTitle}</strong></td>
+          </tr>
+          <tr>
+          <form name="creative" action="advertiser?p=creative&{params}" method="post" onSubmit="return OnSubmit();">
+<input type="hidden" name="cmd" value="{cmd}">
+<input type="hidden" name="advertiserId" value="{advertiserId}">
+			<td align="center">
+			<table width="80%" border="0" cellpadding="5" cellspacing="0" class="advertiser_table_border">
+              <tr>
+                <td align="right"><input type="hidden" name="cmd" value="{cmd}" />
+                  <input type="hidden" name="creativeId" value="{creativeId}" />
+Type</td>
+                <td class="advertiser_select"><select name="typeId">
+                  {typeOptions}
+                </select>                </td>
+              </tr>
+              <tr>
+                <td align="right">Body</td>
+                <td class="advertiser_textarea"><textarea name="bodyNew">{bodyNew}</textarea><a href="javascript:OnPreview(2);">Preview</a></td>
+              </tr>
+              <tr>
+                <td colspan="2" align="center" class="advertiser_btn"><input type="submit" value="{sCmd}">
+<input type="button" value="Cancel" onClick="location='advertiser?p=campaign&{params}';"><input type="reset" value="Reset">
+
+</td>
+                </tr>
+            </table>
+			  <br /></td>
+			</form>
+          </tr>
+        </table>
+		<br /></td>
+      </tr>
+{footer}

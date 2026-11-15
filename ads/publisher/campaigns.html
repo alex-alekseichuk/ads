@@ -1,0 +1,81 @@
+{header}
+<!-- begin_campaigns -->
+      <tr>
+        <td height="300" align="center" valign="top" class="advertiser_links"><span class="font_red">{sMessage}</span><br />
+		<br />
+		<table width="80%" border="0" align="center" cellpadding="5" cellspacing="0" class="news_advertiser_table">
+          <tr>
+            <td><strong>::: Campaigns</strong></td>
+          </tr>
+          <tr>
+           
+			<td align="center"> {info} &nbsp;&nbsp;&nbsp;
+<!-- begin_campaigns_pager -->
+<!-- begin_campaigns_first --><a href="{url}">First</a> <!-- end_campaigns_first -->
+<!-- begin_campaigns_prev --><a href="{url}">Prev.</a> <!-- end_campaigns_prev -->
+<!-- begin_campaigns_page -->
+<!-- begin_campaigns_link --><a href="{url}">{page}</a> <!-- end_campaigns_link -->
+<!-- begin_campaigns_curpage --><b>{page}</b> <!-- end_campaigns_curpage -->
+<!-- end_campaigns_page -->
+<!-- begin_campaigns_next --><a href="{url}">Next</a> <!-- end_campaigns_next -->
+<!-- begin_campaigns_last --><a href="{url}">Last</a> <!-- end_campaigns_last -->
+<!-- end_campaigns_pager -->
+
+<table border="1" cellpadding="3" cellspacing="0" bordercolor="#B6CFA9" class="advertiser_table_border">
+<tr>
+<td align="center">
+	<!-- begin_campaigns_sort_campaignId --><a href="{url}">ID</a> 
+	<!-- begin_campaigns_asc_campaignId --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_campaigns_asc_campaignId -->
+	<!-- begin_campaigns_desc_campaignId --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_campaigns_desc_campaignId --><!-- end_campaigns_sort_campaignId --></td> 
+<td align="center">
+	<!-- begin_campaigns_sort_name --><a href="{url}">Name</a> 
+	<!-- begin_campaigns_asc_name --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_campaigns_asc_name -->
+	<!-- begin_campaigns_desc_name --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_campaigns_desc_name --><!-- end_campaigns_sort_name --></td> 
+<td align="center">
+	<!-- begin_campaigns_sort_category --><a href="{url}">Category</a> 
+	<!-- begin_campaigns_asc_category --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_campaigns_asc_category -->
+	<!-- begin_campaigns_desc_category --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_campaigns_desc_category --><!-- end_campaigns_sort_category --></td> 
+<td align="center">
+	<!-- begin_campaigns_sort_type --><a href="{url}">Type</a> 
+	<!-- begin_campaigns_asc_type --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_campaigns_asc_type -->
+	<!-- begin_campaigns_desc_type --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_campaigns_desc_type --><!-- end_campaigns_sort_type --></td> 
+<td align="center">
+	<!-- begin_campaigns_sort_price --><a href="{url}">Price</a> 
+	<!-- begin_campaigns_asc_price --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_campaigns_asc_price -->
+	<!-- begin_campaigns_desc_price --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_campaigns_desc_price --><!-- end_campaigns_sort_price --></td> 
+<td align="center">
+	<!-- begin_campaigns_sort_registered --><a href="{url}">Registered</a> 
+	<!-- begin_campaigns_asc_registered --><img border="0" src="{HTTP_ROOT}img/asc.gif" /><!-- end_campaigns_asc_registered -->
+	<!-- begin_campaigns_desc_registered --><img border="0" src="{HTTP_ROOT}img/desc.gif" /><!-- end_campaigns_desc_registered --><!-- end_campaigns_sort_registered --></td> 
+</tr>
+
+<!-- begin_campaigns_item -->
+<tr>
+<td align="center">{campaignId}</td>
+<td align="center"><a href="publisher?p=campaign&campaignId={campaignId}&{params}">{name}</a></td>
+<td align="center">{category}</td>
+<td align="center">{type}</td>
+<td align="center">{price}</td>
+<td align="center">{registered}</td>
+
+</tr>
+<!-- end_campaigns_item -->
+
+
+<!-- begin_campaigns_noitems -->
+<tr>
+<td colspan="7">No campaigns</td>
+</tr>
+<!-- end_campaigns_noitems -->
+</table>
+
+{info} &nbsp;&nbsp;&nbsp; {pager2}
+
+<!-- end_campaigns -->
+<br /></td>
+			
+          </tr>
+        </table>
+		</td>
+      </tr>
+{footer}
